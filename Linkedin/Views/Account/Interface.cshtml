@@ -11,21 +11,37 @@
     <link type="text/css" rel="stylesheet" href="~/Content/style.css" />
 </head>
 <body>
-    <div class="headerx">
-    </div>
-    <div class="header">
-        <div id="logo" class="header"> <img src="~/Resource/logo.png" /> </div>
-        <div id="form1" class="header">
-            <input type="mail" style="height:25px; width:200px;" name="email" placeholder="Email or phone number" />
+    <section id="loginForm">
+
+        <div class="header">
+            <div id="logo" class="header"> <img src="~/Resource/logo.png" /> </div>
+
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div id="form1" class="header">
+                    @Html.TextBoxFor(m => m.Email, new { style="width:200px;height:25px",placeholder="Email" })
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div id="form2" class="header">
+                    <input type="password" style="height:25px; width:200px;" name="email" placeholder="Password" /><br>
+                    <div id="forget">forget password?</div>
+
+
+
+
+                </div>
+                <div id="submit1" class="header">
+                    <input type="submit" id="submit1" value="Sign in" />
+                </div>
+            }
         </div>
-        <div id="form2" class="header">
-            <input type="password" style="height:25px; width:200px;" name="email" placeholder="Password" /><br>
-            <div id="forget">forget password?</div>
-        </div>
-        <div id="submit1" class="header">
-            <input type="submit" id="submit1" value="Sign in" />
-        </div>
-    </div>
+    </section>
     <div class="main">
         <center>
             <div class="box">

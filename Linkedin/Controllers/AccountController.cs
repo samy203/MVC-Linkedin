@@ -422,7 +422,11 @@ namespace Linkedin.Controllers
 
             base.Dispose(disposing);
         }
-
+        [AllowAnonymous]
+        public ActionResult Interface()
+        {
+            return View("Interface");
+        }
         #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

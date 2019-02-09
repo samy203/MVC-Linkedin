@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-
-namespace Linkedin.Models
+﻿namespace Linkedin.Models
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+
     public class ExternalLoginConfirmationViewModel
     {
         [Required]
@@ -65,7 +66,7 @@ namespace Linkedin.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name ="First Name")]
+        [Display(Name = "First Name")]
         [StringLength(100)]
         public string FirstName { get; set; }
 
@@ -74,13 +75,13 @@ namespace Linkedin.Models
         [Display(Name = "Last Name")]
         [StringLength(100)]
         public string LastName { get; set; }
-                       
+
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-        
+
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
@@ -121,17 +122,42 @@ namespace Linkedin.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+
     public class InterfaceViewModel
     {
         [Required]
+        [Display(Name = "First Name")]
+        [StringLength(100)]
         public string FirstName { get; set; }
 
         [Required]
+        [Display(Name = "LastName")]
+        [StringLength(100)]
         public string LastName { get; set; }
 
+
+        public void IsActionLogin()
+        {
+            isLogin = true;
+            isRegister = false;
+        }
+
+        public void IsActionRegister()
+        {
+            isLogin = false;
+            isRegister = true;
+        }
+
+        public void IsLoginFailed()
+        {
+            isLoginFailed = true;
+        }
+
+
         [Required]
-        [Display(Name = "Email")]
         [EmailAddress]
+        [Display(Name = "Email")]
         public string Email { get; set; }
 
 
@@ -145,6 +171,13 @@ namespace Linkedin.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-   
+
+        public bool isLogin { get; set; }
+
+
+        public bool isRegister { get; set; }
+
+        
+        public bool isLoginFailed { get; set; }
     }
 }

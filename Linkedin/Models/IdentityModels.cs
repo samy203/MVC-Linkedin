@@ -37,22 +37,5 @@ namespace Linkedin.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public DbSet<Friend> Friends { get; set; }
-        public DbSet<Comment> Coments { get; set; }
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<Experience> Experiences { get; set; }
-        public DbSet<Message> Messages { get; set; }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
+    
 }

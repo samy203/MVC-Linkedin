@@ -138,3 +138,6 @@ E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AI.WindowsServer.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AI.Web.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.dll
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.pdb
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.db4.resources
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache

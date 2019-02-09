@@ -16,7 +16,7 @@ namespace Linkedin
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Account", action = "Register", id = UrlParameter.Optional }
+                defaults: new { controller = "Account", action = "Interface", id = UrlParameter.Optional }
             );
         }
     }

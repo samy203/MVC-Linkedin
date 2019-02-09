@@ -2,5 +2,5 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/Linkedin/App_Data/aspnet-Linkedin-20190208024831.mdf
 /Linkedin/App_Data
+

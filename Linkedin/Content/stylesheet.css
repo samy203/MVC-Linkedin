@@ -1,0 +1,88 @@
+@import url("http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+  position: relative;
+  width: 36px;
+  font-size: 24px;
+}
+
+.navbar{
+   height: 52px;
+   padding: 0 30px;
+   background: #283e4a;
+}
+
+.fa-linkedin-square {
+    background: #283e4a;
+    color:white;
+    margin-left: 80px;
+    font-size: 42px;
+    margin-left: 80 px;
+  }
+.input-group{
+    height: 36px;
+    width:275px;
+    margin-right: 130px;
+    margin-top: 16px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+
+}
+
+.search-btn .ffs{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    display:inline-block;
+    height: 36px;
+    widows: 36px;
+}
+.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+  font-size: 0.75rem;
+  position: absolute;
+  right: 0;
+  font-family: sans-serif;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa {
+  top: 3px;
+  line-height: 12px;
+}
+
+.navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
+  top: -10px;
+}
+.nav-item{
+  height: 51px;
+  width:88px; 
+  display:block;
+  justify-content: center;
+  text-align: center;
+  font-size:14px;
+}
+.icon{
+  margin-bottom: 10px;
+  margin-top:3px;
+}
+
+.active{  
+  border-bottom:2px solid;
+border-color: white;
+}
+.margin-left{
+  padding-right: 30px;
+  border-right: 2px solid;
+  border-color:white;
+}
+.spacer{
+  width: 30px;
+  height: auto;
+  border-right: 2px solid;
+  border-color : grey;
+}
+.nav-link{
+  font-size: 10px;
+}
+.icon-text{
+  font-size: 11px;
+}
+

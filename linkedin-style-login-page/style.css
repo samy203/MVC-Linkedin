@@ -175,4 +175,11 @@ height:750px;
 	 margin-right:20px;
 	 font-size:12px;
  }
+ .mrgn-btm-5{
+margin-bottom:5px; 
+ }
 
+.reg-segment{
+	height:10px;
+	width:30%;
+}

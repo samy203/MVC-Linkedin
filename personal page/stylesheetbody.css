@@ -33,8 +33,8 @@
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
     display:inline-block;
-    height: 38px;
-    width: 38px;
+    height: 36px;
+    widows: 36px;
 }
 .navbar-icon-top .navbar-nav .nav-link > .fa > .badge {
   font-size: 0.75rem;
@@ -133,7 +133,7 @@ body{
   width : 70px;
   height: 70px;
   border-radius: 50%;
-  background-image: url(../Resource/pic.png);
+  background-image: url('pic.png');
   border:2px solid;
   border-color: white; 
   margin: auto;

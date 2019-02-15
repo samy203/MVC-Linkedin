@@ -107,7 +107,7 @@ body{
 .profile-background{
   width: 214px;
   height: 52px;
-  background-image: url('1.png')
+  background-image: url(../Resource/1.png)
 }
 
 .feeds-container{
@@ -133,7 +133,7 @@ body{
   width : 70px;
   height: 70px;
   border-radius: 50%;
-  background-image: url(../Resource/pic.png);
+  /*background-image: url('pic.png');*/
   border:2px solid;
   border-color: white; 
   margin: auto;

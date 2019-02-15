@@ -1,44 +1,96 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
-</head>
+﻿<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="~/Content/stylesheet.css">
+</head> 
+      
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+<nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
+  <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+  <a href="#" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
+
+        <form class="navbar-form" role="search" >
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="search" name="q">
+            <div class="search-btn">
+                <button class="btn btn-default ffs" type="submit"><i class="fa fa-search"></i></button>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+        </form>    
 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+          <li class="nav-item active">
+              <a class="nav-link" href="#">
+                  <i class="fa fa-home icon"></i><br>
+                  <span class="icon-text">Home</span>
+              </a>
+          </li>
+          <li class="nav-item ">
+              <a class="nav-link" href="#">
+                  <i class="fa fa-users icon"></i>
+                  <span class="icon-text">Network</span>
+              </a>
+          </li>
+          <li class="nav-item ">
+              <a class="nav-link" href="#">
+                  <i class="fa fa-suitcase icon"></i><br>
+                  <span class="icon-text">Jobs</span>
+              </a>
+          </li>
+          <li class="nav-item ">
+              <a class="nav-link disabled" href="#">
+                  <i class="fa fa-envelope-o icon">
+                      <span class="badge badge-danger">11</span>
+                  </i>
+                  <span class="icon-text">Messages</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">
+                  <i class="fa fa-globe icon">
+                      <span class="badge badge-info">11</span>
+                  </i>
+                  <span class="icon-text">Notifications</span>
+              </a>
+          </li>
+          <span class="spacer"></span>
+          <li class="nav-item">
+              <a class="nav-link" href="#">
+                  <i class="fa fa-user icon"></i><br>
+                  <span class="icon-text">Profile</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#">
+                  <i class="fa fa-sign-out icon"></i><br>
+                  <span class="icon-text">Sign-out</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+</nav>    
+
+    @RenderBody()
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/profileFnc")
     @RenderSection("scripts", required: false)
 </body>
-</html>
+
+
+
+
+
+
+
+
+
+

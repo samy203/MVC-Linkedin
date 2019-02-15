@@ -1,31 +1,181 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<link rel="stylesheet" href="~/Content/stylesheetbody.css">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+<div class="main-container">
+    <div class="profile-container">
+        <div class="personal-container">
+            <div class="profile-background"></div>
+            <div>
+                <img class="profile-img" src="~/Resource/pic.png" width="70px" height="70px"/>
+            </div>
+            <div class="welcome-container">Welcome Scorias</div>
+            <div class="connections">
+                <div class="text-container">
+                    <div class="txt">Connections :</div>
+                    <div class="txt-num">5</div> <br>
+                    <div class="txt">Who viewed this profile :</div>
+                    <div class="txt-num">10</div>
+                </div>
+
+            </div>
+            <div><a href="" class="form control free-cnt-top-12">Update Profile</a></div>
+        </div>
+
+        <div class="current-info">
+            <div class="current-work">
+                <div class="work-img">
+                    <img src="pic.png" alt="" width="50px" height="50px">
+                </div>
+                <div class="work-txt">
+                    <span>TCB Consultants</span>
+                </div>
+            </div>
+            <div class="activity">
+                <div class="txt free-cnt-top-18">Page Activity :</div>
+                <div class="txt-num free-cnt-top-18">10</div>
+            </div>
+            <div class="txt-center"><a href="" class="form control free-cnt-top-9">Share Update</a></div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+
+
+
+
+
+
+    <div class="feeds-container">
+        <div class="wannabe-post">
+            <div class="post-area">
+                <textarea name="" class="form-control post-text" cols="30" rows="10" placeholder="Write a Post"></textarea>
+                <input type="submit" class="form-control post-submit" value="Post">
+            </div>
+        </div>
+        <div class="seperator"></div>
+        <div class="posts">
+            <div class="poster-data">
+                <img class="poster-img" src="pic.png" alt="" width="50px" height="50px">
+                <div class="poster-name">
+                    <div>Scorias Elhabeed</div>
+                    <div style="font-size: 12px">8 hr ago</div>
+                </div>
+            </div>
+            <div class="post-content">
+                Scorias El Habeed and Sayed El Habood decided to do some Habd mind works in MVC project so dumb and sad and mad and crap and shit and hbood and hbeed
+            </div>
+            <div class="LC-tab">
+                <button onclick="AddLineUnder(2)" class="fa fa-thumbs-up like-btn"> Like</button>
+                <button class="fa fa-commenting like-btn combtn"> Comment</button>
+            </div>
+            <div class="comments">
+                <div class="user-comment">
+                    <img class="comment-img" src="pic.png" alt="" width="35px" height="35px">
+                    <input type="text" class="user-text-comment form-control">
+                    <input type="submit" class="form-control comment-submit" value="Comment">
+                </div>
+                <div class="other-comment">
+                    <img class="comment-img" src="pic.png" alt="" width="35px" height="35px">
+                    <div class="comment-posting-data">
+                        <span class="font-14">Hbood ElHabeed</span><br>
+                        <span class="font-12">3h</span>
+                    </div>
+                    <div class="comment-posting-text font-14">I think you people are habding too much</div>
+                </div>
+                <div class="other-comment">
+                    <img class="comment-img" src="pic.png" alt="" width="35px" height="35px">
+                    <div class="comment-posting-data">
+                        <span class="font-14">Nignog El nagnoog</span><br>
+                        <span class="font-12">8h</span>
+                    </div>
+                    <div class="comment-posting-text font-14">AYYY WER IZ DA BANANA MAN, WE APES NEED SOME GUT FOOD SO WE REPRODUCE AND FUCK SAYED AZZ</div>
+                </div>
+
+            </div>
+        </div>
+        <div class="posts">
+            <div class="poster-data">
+                <img class="poster-img" src="pic.png" alt="" width="50px" height="50px">
+                <div class="poster-name">
+                    <div>Scorias Elhabeed</div>
+                    <div style="font-size: 12px">8 hr ago</div>
+                </div>
+            </div>
+            <div class="post-content">
+                Scorias El Habeed and Sayed El Habood decided to do some Habd mind works in MVC project so dumb and sad and mad and crap and shit and hbood and hbeed
+            </div>
+            <div class="LC-tab">
+                <button onclick="AddLineUnder(2)" class="fa fa-thumbs-up like-btn"> Like</button>
+                <button class="fa fa-commenting like-btn combtn"> Comment</button>
+            </div>
+            <div class="comments">
+                <div class="user-comment">
+                    <img class="comment-img" src="pic.png" alt="" width="35px" height="35px">
+                    <input type="text" class="user-text-comment form-control">
+                    <input type="submit" class="form-control comment-submit" value="Comment">
+                </div>
+                <div class="other-comment">
+                    <img class="comment-img" src="pic.png" alt="" width="35px" height="35px">
+                    <div class="comment-posting-data">
+                        <span class="font-14">Hbood ElHabeed</span><br>
+                        <span class="font-12">3h</span>
+                    </div>
+                    <div class="comment-posting-text font-14">I think you people are habding too much</div>
+                </div>
+                <div class="other-comment">
+                    <img class="comment-img" src="pic.png" alt="" width="35px" height="35px">
+                    <div class="comment-posting-data">
+                        <span class="font-14">Nignog El nagnoog</span><br>
+                        <span class="font-12">8h</span>
+                    </div>
+                    <div class="comment-posting-text font-14">AYYY WER IZ DA BANANA MAN, WE APES NEED SOME GUT FOOD SO WE REPRODUCE AND FUCK SAYED AZZ</div>
+                </div>
+
+            </div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+
+
+
+
+    <div class="friends-container">
+        <div class="friends-header">
+            <span class="font-18">Suggested Connections</span>
+        </div>
+        <div class="friends-elements">
+            <div class="sug-frnd-data">
+                <img class="frnd-img" src="pic.png" alt="" width="50px" height="50px">
+
+                <div class="frnd-name">
+                    <div>Scorias Elhabeed</div>
+                </div>
+                <button class="fa fa-plus-square add-friend-btn font-30"></button>
+            </div>
+        </div>
+        <div class="friends-elements">
+            <div class="sug-frnd-data">
+                <img class="frnd-img" src="pic.png" alt="" width="50px" height="50px">
+
+                <div class="frnd-name">
+                    <div>Scorias Elhabeed</div>
+                </div>
+                <button class="fa fa-plus-square add-friend-btn font-30"></button>
+            </div>
+        </div>
+        <div class="friends-elements">
+            <div class="sug-frnd-data">
+                <img class="frnd-img" src="pic.png" alt="" width="50px" height="50px">
+
+                <div class="frnd-name">
+                    <div>Scorias Elhabeed</div>
+                </div>
+                <button class="fa fa-plus-square add-friend-btn font-30"></button>
+            </div>
+        </div>
     </div>
+
+
+    <script src="script.js"></script>
 </div>

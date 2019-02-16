@@ -222,6 +222,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\infoauthstylesheet.css" />
+    <Content Include="Content\infostylesheet.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\stylesheet.css" />
     <Content Include="Content\stylesheetbody.css" />
@@ -289,6 +291,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Interface.cshtml" />
+    <Content Include="Views\Home\PersonalEdit.cshtml" />
+    <Content Include="Views\Home\Personal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

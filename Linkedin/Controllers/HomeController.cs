@@ -11,7 +11,7 @@ namespace Linkedin.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View();
+            return View("Feeds");
         }
 
         public ActionResult About()

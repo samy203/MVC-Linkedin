@@ -2,16 +2,16 @@ var navbar = document.getElementsByClassName("nav-item")
 var comments=document.getElementsByClassName("comments")
 var commentbtn = document.getElementsByClassName("combtn")
 
-for(let i=0 ; i<7;i++){
-    navbar[i].addEventListener("click",
-    function (){
-        for(let i=0 ; i<7;i++){
-            navbar[i].classList.remove("active");
-        }
-        navbar[i].classList.add("active");
-    }
-    );
-}
+//for(let i=0 ; i<7;i++){
+//    navbar[i].addEventListener("click",
+//    function (){
+//        for(let i=0 ; i<7;i++){
+//            navbar[i].classList.remove("active");
+//        }
+//        navbar[i].classList.add("active");
+//    }
+//    );
+//}
 
 function AddLineUnder(i){
     for(let i=0 ; i<6;i++){

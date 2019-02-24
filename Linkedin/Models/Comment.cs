@@ -21,6 +21,8 @@ namespace Linkedin.Models
         [ForeignKey("Post")]
         public string Fk_PostID { get; set; }
 
+        [Required]
+        public string Content { get; set; }
 
         public Post Post { get; set; }
 

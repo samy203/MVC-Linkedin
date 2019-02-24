@@ -139,19 +139,19 @@
 
         public void IsActionLogin()
         {
-            isLogin = true;
-            isRegister = false;
+            IsLogin = true;
+            IsRegister = false;
         }
 
         public void IsActionRegister()
         {
-            isLogin = false;
-            isRegister = true;
+            IsLogin = false;
+            IsRegister = true;
         }
 
-        public void IsLoginFailed()
+        public void LoginFailed()
         {
-            isLoginFailed = true;
+            IsLoginFailed = true;
         }
 
 
@@ -172,12 +172,12 @@
         public string Password { get; set; }
 
 
-        public bool isLogin { get; set; }
+        public bool IsLogin { get; set; }
 
 
-        public bool isRegister { get; set; }
+        public bool IsRegister { get; set; }
 
         
-        public bool isLoginFailed { get; set; }
+        public bool IsLoginFailed { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿@model InterfaceViewModel
 @{
     ViewBag.Title = "Log in";
-    bool registerCallBack = Model.isRegister;
-    bool loginCallBack = Model.isLogin;
+    bool registerCallBack = Model.IsRegister;
+    bool loginCallBack = Model.IsLogin;
     Layout = null;
 }
 
@@ -33,7 +33,7 @@
                     @{
                         if (loginCallBack)
                         {
-                            if (Model.isLoginFailed)
+                            if (Model.IsLoginFailed)
                             {
                                 <span class="text-danger" style="font-size:12px;color:red">Wrong E-mail or password.</span>
                             }

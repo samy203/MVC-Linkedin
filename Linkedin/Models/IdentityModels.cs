@@ -27,6 +27,7 @@ namespace Linkedin.Models
         //HOW TO IMPLEMENT!
         List<ApplicationUser> Friends { get; set; }
 
+        List<Skill> Skills { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -44,7 +45,7 @@ namespace Linkedin.Models
         public DbSet<Post> Posts { get; set; }
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<Message> Messages { get; set; }
-
+        public DbSet<Skill> Skills { get; set; }
 
 
 

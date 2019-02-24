@@ -444,7 +444,7 @@ namespace Linkedin.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    model.IsLoginFailed();
+                    model.LoginFailed();
                     return View("Interface",model);
             }
         }

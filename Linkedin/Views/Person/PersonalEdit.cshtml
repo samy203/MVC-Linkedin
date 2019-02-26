@@ -7,7 +7,6 @@
             <img src="~/Resource/pic.png" class="profile-img" alt="">
             <div class="info-container">
                 <div class="left-side">
-
                     <div class="personal-data">
                         <div class="name">@Model.ApplicationUser.FirstName</div>
                         <div class="job">
@@ -42,7 +41,7 @@
                     </span>
                 </div>
             </div>
-        </div>   
+        </div>
         @Html.Partial("_PartialContainerExp", Model)
         @Html.Partial("_PartialContainerSkill", Model)
 
@@ -52,3 +51,5 @@
 </div>
 @Html.Partial("_PartialAddSkill", Model)
 @Html.Partial("_PartialAddExp", Model)
+
+@Scripts.Render("~/bundles/jqueryabs")

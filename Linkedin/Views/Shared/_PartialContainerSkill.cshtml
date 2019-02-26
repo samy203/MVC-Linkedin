@@ -3,7 +3,7 @@
 <div class="skills-container" id="skillz">
 
     <div class="title">Skills</div>
-    @{ if (Model.ApplicationUser.Skills != null)
+    @{ if (Model.ApplicationUser != null && Model.ApplicationUser.Skills != null)
         {
             foreach (Skill skill in Model.ApplicationUser.Skills)
             {

@@ -10,6 +10,7 @@ namespace Linkedin.Models.ViewModels
         public ApplicationUser ApplicationUser { get; set; }
         public string ID { get; set; }
         public Skill Skill { get; set; }
+        public List<Skill> Skills { get; set; }
         public Experience Experience { get; set; }
     }
 

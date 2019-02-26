@@ -205,9 +205,13 @@
     <Compile Include="Layers\Data Access\ApplicationDbContext.cs" />
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
-    <Compile Include="Migrations\201902251057479_nitwit.cs" />
-    <Compile Include="Migrations\201902251057479_nitwit.Designer.cs">
-      <DependentUpon>201902251057479_nitwit.cs</DependentUpon>
+    <Compile Include="Migrations\201902261604597_nitwithabd.cs" />
+    <Compile Include="Migrations\201902261604597_nitwithabd.Designer.cs">
+      <DependentUpon>201902261604597_nitwithabd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902261606533_nit5ara.cs" />
+    <Compile Include="Migrations\201902261606533_nit5ara.Designer.cs">
+      <DependentUpon>201902261606533_nit5ara.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -327,8 +331,11 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902251057479_nitwit.resx">
-      <DependentUpon>201902251057479_nitwit.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902261604597_nitwithabd.resx">
+      <DependentUpon>201902261604597_nitwithabd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902261606533_nit5ara.resx">
+      <DependentUpon>201902261606533_nit5ara.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

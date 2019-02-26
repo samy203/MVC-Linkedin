@@ -34,10 +34,8 @@ namespace Linkedin.Controllers
             PersonViewModel vM = new PersonViewModel();
             var user = u.context.Users.Where(e => e.Email == model.Email).FirstOrDefault();
             vM.ApplicationUser = user;
-            var skillList = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id);
-            var expList = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id);
-            vM.ApplicationUser.Skills = skillList.ToList();
-            vM.ApplicationUser.Experiences = expList.ToList();
+            vM.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+            vM.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
             return View("PersonalEdit", vM);
         }
 
@@ -53,24 +51,14 @@ namespace Linkedin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var modelForIter = new PersonViewModel();
-                modelForIter.ID = model.ID;
-                modelForIter.Skill = model.Skill;
-
                 var user = u.context.Users.Find(model.ID);
-                var newSkill = new Skill();
+                model.Skill.Fk_ApplicationUserID = user.Id;
+                model.ApplicationUser = user;
+                skillMang.Add(model.Skill);
+                var skillList = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == model.ID).ToList();
+                model.ApplicationUser.Skills = skillList;
+                return PartialView("_PartialContainerSkill", model);
 
-
-                newSkill.Fk_ApplicationUserID = user.Id;
-                newSkill.Content = model.Skill.Content;
-                skillMang.Add(newSkill);
-
-
-                var skillList = u.GetManager<SkillManager>().GetAllBind().Where(s => s.Fk_ApplicationUserID == modelForIter.ID);
-                modelForIter.ApplicationUser = user;
-                modelForIter.ApplicationUser.Skills = skillList.ToList();
-                return PartialView("_PartialContainerSkill", modelForIter);
-               
             }
 
             return View(model);
@@ -79,7 +67,7 @@ namespace Linkedin.Controllers
         [HttpPost]
         public ActionResult AddAjaxExp(PersonViewModel model)
         {
-       
+
             if (ModelState.IsValid)
             {
                 var modelForIter = new PersonViewModel();
@@ -100,7 +88,7 @@ namespace Linkedin.Controllers
                 modelForIter.ApplicationUser.Experiences = expList.ToList();
                 return PartialView("_PartialContainerExp", modelForIter);
             }
-       
+
             return View(model);
         }
 

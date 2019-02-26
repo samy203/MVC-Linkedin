@@ -8,6 +8,6 @@ namespace Linkedin.Models.ViewModels
 {
     public class FeedsViewModel
     {
-        public ApplicationUser applicationUser { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
     }
 }

@@ -19,20 +19,23 @@ namespace Linkedin.Models
         public string LastName { get; set; }
 
 
-        List<Comment> Comments { get; set; }
+       public List<Comment> Comments { get; set; }
 
 
-        List<Experience> Experiences { get; set; }
+        public List<Experience> Experiences { get; set; }
 
-        //HOW TO IMPLEMENT!
-        List<ApplicationUser> Friends { get; set; }
 
-        List<Skill> Skills { get; set; }
+        //public List<ApplicationUser> Friends { get; set; }
+
+
+        public List<Skill> Skills { get; set; }
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            
             // Add custom user claims here
             return userIdentity;
         }

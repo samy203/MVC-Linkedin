@@ -1,0 +1,22 @@
+﻿@model PersonViewModel
+
+<div class="skills-container" id="skillz">
+
+    <div class="title">Skills</div>
+    @{ if (Model.ApplicationUser.Skills != null)
+        {
+            foreach (Skill skill in Model.ApplicationUser.Skills)
+            {
+                <div class="skill-intity edit">
+                    <div class="skill-name">@skill.Content</div>
+                </div>
+                <div class="opr-btn edit edit-panel">
+                    <div><button class="edit-btn ">Edit</button></div>
+                    <div><button class="edit-btn ">delete</button></div>
+                </div>
+            }
+        }
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")

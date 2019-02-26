@@ -1,0 +1,38 @@
+﻿@model PersonViewModel
+
+@{
+    AjaxOptions ajaxopts = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "skillz",
+        InsertionMode = InsertionMode.Replace
+    };
+}
+
+@using (Ajax.BeginForm("AddAjaxSkill", "Person", ajaxopts))
+{
+    <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Add Skill Menu</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        @{Model.ID = Model.ApplicationUser.Id;}
+                        @Html.HiddenFor(m => m.ID)
+                        @Html.LabelFor(m => m.Skill.Content)
+                        @Html.EditorFor(m => m.Skill.Content, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(m => m.Skill.Content)
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Add" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </div>
+}

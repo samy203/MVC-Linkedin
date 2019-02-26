@@ -9,7 +9,7 @@
     {
         private static UnitOfWork instance = null;
 
-        ApplicationDbContext context;
+        public ApplicationDbContext context;
 
 
         private static readonly object padlock = new object();

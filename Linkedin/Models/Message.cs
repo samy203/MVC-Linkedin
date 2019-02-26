@@ -11,7 +11,7 @@ namespace Linkedin.Models
     public class Message
     {
         [Key]
-        public string MessageID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Content { get; set; }

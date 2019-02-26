@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -204,13 +205,9 @@
     <Compile Include="Layers\Data Access\ApplicationDbContext.cs" />
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
-    <Compile Include="Migrations\201902121100283_mig2.cs" />
-    <Compile Include="Migrations\201902121100283_mig2.Designer.cs">
-      <DependentUpon>201902121100283_mig2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902240811324_newMig.cs" />
-    <Compile Include="Migrations\201902240811324_newMig.Designer.cs">
-      <DependentUpon>201902240811324_newMig.cs</DependentUpon>
+    <Compile Include="Migrations\201902251057479_nitwit.cs" />
+    <Compile Include="Migrations\201902251057479_nitwit.Designer.cs">
+      <DependentUpon>201902251057479_nitwit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -223,6 +220,8 @@
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Post.cs" />
+    <Compile Include="Controllers\FeedController.cs" />
+    <Compile Include="Models\ViewModels\PersonViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -249,10 +248,14 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\boot4.css" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\bootjs.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -276,7 +279,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Feeds.cshtml" />
+    <Content Include="Views\Feed\Feeds.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -298,8 +301,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Interface.cshtml" />
-    <Content Include="Views\Home\PersonalEdit.cshtml" />
-    <Content Include="Views\Home\Personal.cshtml" />
+    <Content Include="Views\Person\PersonalEdit.cshtml" />
+    <Content Include="Views\Person\Personal.cshtml" />
+    <Content Include="Views\Shared\_PartialLogin.cshtml" />
+    <Content Include="Views\Shared\_PartialAddSkill.cshtml" />
+    <Content Include="Views\Shared\_PartialAddExp.cshtml" />
+    <Content Include="Views\Account\RedirectLogin.cshtml" />
+    <Content Include="Views\Shared\_PartialContainerSkill.cshtml" />
+    <Content Include="Views\Shared\_PartialContainerExp.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,11 +327,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902121100283_mig2.resx">
-      <DependentUpon>201902121100283_mig2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902240811324_newMig.resx">
-      <DependentUpon>201902240811324_newMig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902251057479_nitwit.resx">
+      <DependentUpon>201902251057479_nitwit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

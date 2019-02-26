@@ -52,9 +52,10 @@
         [Required]
         [Display(Name = "Email")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string LoginEmail { get; set; }
 
         [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
@@ -63,7 +64,7 @@
         public bool RememberMe { get; set; }
     }
 
-    public class RegisterViewModel
+    public class RegisterViewModel : LoginViewModel
     {
         [Required]
         [Display(Name = "First Name")]
@@ -75,23 +76,6 @@
         [Display(Name = "Last Name")]
         [StringLength(100)]
         public string LastName { get; set; }
-
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-        [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-        public string ConfirmPassword { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -121,63 +105,5 @@
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
-    }
-
-
-    public class InterfaceViewModel
-    {
-        [Required]
-        [Display(Name = "First Name")]
-        [StringLength(100)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [Display(Name = "LastName")]
-        [StringLength(100)]
-        public string LastName { get; set; }
-
-
-        public void IsActionLogin()
-        {
-            IsLogin = true;
-            IsRegister = false;
-        }
-
-        public void IsActionRegister()
-        {
-            IsLogin = false;
-            IsRegister = true;
-        }
-
-        public void LoginFailed()
-        {
-            IsLoginFailed = true;
-        }
-
-
-        [Required]
-        [EmailAddress]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
-
-
-        [Display(Name = "Remember me?")]
-        public bool RememberMe { get; set; }
-
-
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Password")]
-        public string Password { get; set; }
-
-
-        public bool IsLogin { get; set; }
-
-
-        public bool IsRegister { get; set; }
-
-        
-        public bool IsLoginFailed { get; set; }
     }
 }

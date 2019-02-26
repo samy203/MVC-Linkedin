@@ -12,7 +12,7 @@ namespace Linkedin.Models
     public class Post
     {
         [Key]
-        public string PostID { get; set; }
+        public int Id { get; set; }
 
         public int Likes { get; set; }
 

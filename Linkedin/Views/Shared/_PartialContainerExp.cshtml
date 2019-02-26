@@ -1,0 +1,25 @@
+﻿@model PersonViewModel
+
+
+<div class="experience-container" id="exps">
+    @{ if (Model.ApplicationUser.Experiences != null)
+        {
+            foreach (Experience exp in Model.ApplicationUser.Experiences)
+            {
+                <div class="experience-entity">
+                    <img class="experience-img" src="~/Resource/pic.png" alt="" width="70px" height="70px">
+                    <div class="experience-data com-nam">@exp.Content</div>
+                    <div class="experience-data">From:</div>
+                    <div class="experience-data bor-left">@exp.StartYear</div>
+                    <div class="experience-data">To :</div>
+                    <div class="experience-data bor-left">@exp.EndYear</div>
+                    <div class="experience-data experience-edit">
+                        <div><button class="edit-btn btn btn-default msg-btn">Edit</button></div>
+                        <div><button class="edit-btn btn btn-default msg-btn ">delete</button></div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>
+@*@Scripts.Render("~/bundles/jquery")*@

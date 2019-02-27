@@ -29,22 +29,94 @@ namespace Linkedin.Controllers
 
         // GET: Feed
         [Authorize]
-        public ActionResult Index(SimplifiedPersonViewModel model)
+        public ActionResult Index(PersonViewModel model)
         {
-            PersonViewModel vM = new PersonViewModel();
-            var user = u.context.Users.Where(e => e.Email == model.Email).FirstOrDefault();
-            vM.ApplicationUser = user;
-            vM.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
-            vM.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
-            return View("PersonalEdit", vM);
+            var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+            model.ApplicationUser = user;
+            model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+            model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+            if (Request.IsAjaxRequest())
+            {
+                if (model.IsExp)
+                    return PartialView("_PartialContainerExp", model);
+                else
+                    return PartialView("_PartialContainerSkill", model);
+            }
+            else
+            {
+                return View("PersonalEdit", model);
+            }
+        }
+
+
+        public ActionResult Delete(PersonViewModel model)
+        {
+            var user = u.context.Users.Find(model.ID);
+            model.ApplicationUser = user;
+            if (model.IsExp == true)
+            {
+                model.Experience = expMang.GetAllBind().Find(e => e.Id == model.ExperienceID);
+                expMang.Remove(model.Experience);
+                var expList = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == model.ID).ToList();
+                model.ApplicationUser.Experiences = expList;
+                return PartialView("_PartialContainerExp", model);
+            }
+            else
+            {
+                model.Skill = skillMang.GetAllBind().Find(e => e.Id == model.SkillID);
+                skillMang.Remove(model.Skill);
+                var skillList = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == model.ID).ToList();
+                model.ApplicationUser.Skills = skillList;
+                return PartialView("_PartialContainerSkill", model);
+            }
         }
 
 
 
-        public ActionResult Edit()
+        public ActionResult Save(PersonViewModel model)
         {
-            return null;
+            if (model.IsExp)
+            {
+                model.Experience.Id = model.ExperienceID;
+                model.Experience.Fk_ApplicationUserID = model.ID;
+                expMang.Update(model.Experience);
+            }
+            else
+            {
+                model.Skill.Id = model.SkillID;
+                model.Skill.Fk_ApplicationUserID = model.ID;
+                skillMang.Update(model.Skill);
+            }
+            model.ExperienceID = 0;
+            model.SkillID = 0;
+            return RedirectToAction("Index", model);
         }
+
+
+
+        public ActionResult Edit(PersonViewModel model)
+        {
+            if (model.IsExp)
+            {
+                var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+                model.ApplicationUser = user;
+                model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+                model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+                model.Experience = expMang.GetAllBind().Find(e => e.Id == model.ExperienceID);
+                return PartialView("_PartialContainerExp", model);
+            }
+            else
+            {
+                var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+                model.ApplicationUser = user;
+                model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+                model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+                model.Skill = skillMang.GetAllBind().Find(e => e.Id == model.SkillID);
+                return PartialView("_PartialContainerSkill", model);
+            }
+        }
+
+
 
         [HttpPost]
         public ActionResult AddAjaxSkill(PersonViewModel model)
@@ -58,35 +130,25 @@ namespace Linkedin.Controllers
                 var skillList = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == model.ID).ToList();
                 model.ApplicationUser.Skills = skillList;
                 return PartialView("_PartialContainerSkill", model);
-
             }
-
             return View(model);
         }
+
+
 
         [HttpPost]
         public ActionResult AddAjaxExp(PersonViewModel model)
         {
-
             if (ModelState.IsValid)
             {
-                var modelForIter = new PersonViewModel();
-                modelForIter.ID = model.ID;
-                modelForIter.Experience = model.Experience;
-
                 var user = u.context.Users.Find(model.ID);
-                var newExp = new Experience();
+                model.Experience.Fk_ApplicationUserID = user.Id;
+                model.ApplicationUser = user;
+                expMang.Add(model.Experience);
 
-                newExp.Fk_ApplicationUserID = user.Id;
-                newExp.Content = model.Experience.Content;
-                newExp.StartYear = model.Experience.StartYear;
-                newExp.EndYear = model.Experience.EndYear;
-                expMang.Add(newExp);
-
-                var expList = u.GetManager<ExperienceManager>().GetAllBind().Where(s => s.Fk_ApplicationUserID == modelForIter.ID);
-                modelForIter.ApplicationUser = user;
-                modelForIter.ApplicationUser.Experiences = expList.ToList();
-                return PartialView("_PartialContainerExp", modelForIter);
+                var expList = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == model.ID).ToList();
+                model.ApplicationUser.Experiences = expList;
+                return PartialView("_PartialContainerExp", model);
             }
 
             return View(model);

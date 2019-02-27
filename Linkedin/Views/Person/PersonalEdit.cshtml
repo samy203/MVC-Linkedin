@@ -11,7 +11,7 @@
                         <div class="name">@Model.ApplicationUser.FirstName</div>
                         <div class="job">
                             @{
-                                if (Model.ApplicationUser.Experiences != null)
+                                if (Model.ApplicationUser.Experiences != null && Model.ApplicationUser.Experiences.Count > 0)
                                 {
                                     @Model.ApplicationUser.Experiences[0].Content
                                 }
@@ -49,7 +49,7 @@
         <script>AddLineUnder(5)</script>
     </div>
 </div>
+
 @Html.Partial("_PartialAddSkill", Model)
 @Html.Partial("_PartialAddExp", Model)
-
 @Scripts.Render("~/bundles/jqueryabs")

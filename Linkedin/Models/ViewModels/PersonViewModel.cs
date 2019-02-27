@@ -12,6 +12,9 @@ namespace Linkedin.Models.ViewModels
         public Skill Skill { get; set; }
         public List<Skill> Skills { get; set; }
         public Experience Experience { get; set; }
+        public int ExperienceID { get; set; }
+        public int SkillID { get; set; }
+        public bool IsExp { get; set; }
     }
 
     public class SimplifiedPersonViewModel

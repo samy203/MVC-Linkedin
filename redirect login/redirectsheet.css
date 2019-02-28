@@ -1,0 +1,52 @@
+.main-container{
+  width: 50%;
+  margin: auto;
+  background: white;
+  height: 500px;
+  margin-top: 80px;
+}
+.title{
+  width:15.5%;
+  margin: auto;
+  font-size: 20px;
+  /* background: wheat; */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+.welcome{
+  width: 25%;
+  font-size: 25px;
+  margin: auto;
+  font-weight: 500;
+  /* background: blue; */
+}
+.sub-welcome{
+  width: 84%;
+  /* background: yellow; */
+  margin:auto;
+  color:grey;
+  margin-bottom: 30px;
+}
+.input{
+  margin:auto;
+  width:60%;
+  height: 90px;
+}
+.form-control{
+  padding:15px;
+}
+.submit{
+  background-color:#0073b1;
+  color:white;
+}
+.submit:hover{
+background-color: #006097
+}
+.submit:focus{
+  background-color: #006097;
+  color:white;
+}
+.register{
+  width:33%;
+  margin:auto;
+}

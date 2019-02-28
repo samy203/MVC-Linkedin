@@ -140,7 +140,5 @@ E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.dll
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.pdb
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.mig2.resources
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.mig2.resources
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.newMig.resources

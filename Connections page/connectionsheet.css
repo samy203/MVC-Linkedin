@@ -1,0 +1,52 @@
+
+body{
+  background: lightgray;
+}
+.main-container{
+  width: 90%;
+  margin-top:50;
+  height: 100%;
+  margin-left: 110px;
+}
+.experience-entity{
+border: 1px solid;
+border-color:gray;
+height: 100px;
+background: white;
+margin-bottom: 8px;
+}
+.experience-img{
+  border-radius: 50%;
+  margin-left:10px;
+  border :1px solid;
+  border-color:gray;
+  vertical-align: center;
+  margin-top: 15px;
+}
+.experience-data{
+  display:inline-block;
+  text-align: left;
+  margin-left:10px;
+  vertical-align: top;
+  padding-top:25px;
+  width:10%;
+  height: 60%;
+}
+.com-nam{
+  width:60%;
+}
+.bor-left{
+  border-right: 1px solid;
+  border-color:gray;
+  
+}
+.experience-container{
+  width:600px;
+  margin:auto;
+}
+.remove-btn{
+  margin-left: 20px;
+  margin-top :20px;
+  background: #283e4a;
+  color:white;
+}

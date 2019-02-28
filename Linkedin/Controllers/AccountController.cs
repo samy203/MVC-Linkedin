@@ -429,8 +429,8 @@ namespace Linkedin.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    SimplifiedPersonViewModel vm = new SimplifiedPersonViewModel();
-                    vm.Email = signedUser.Email;
+                    PersonViewModel vm = new PersonViewModel();
+                    vm.ID = signedUser.Id;
                     return RedirectToAction("Index", "Person", vm);
                 case SignInStatus.Failure:
                     if ((ModelState.IsValidField("Email")) && (ModelState.IsValidField("Password")))

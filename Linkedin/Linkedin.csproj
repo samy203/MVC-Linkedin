@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -205,13 +206,17 @@
     <Compile Include="Layers\Data Access\ApplicationDbContext.cs" />
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
-    <Compile Include="Migrations\201902261604597_nitwithabd.cs" />
-    <Compile Include="Migrations\201902261604597_nitwithabd.Designer.cs">
-      <DependentUpon>201902261604597_nitwithabd.cs</DependentUpon>
+    <Compile Include="Migrations\201902272112018_nitwit.cs" />
+    <Compile Include="Migrations\201902272112018_nitwit.Designer.cs">
+      <DependentUpon>201902272112018_nitwit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902261606533_nit5ara.cs" />
-    <Compile Include="Migrations\201902261606533_nit5ara.Designer.cs">
-      <DependentUpon>201902261606533_nit5ara.cs</DependentUpon>
+    <Compile Include="Migrations\201902272119063_7omar.cs" />
+    <Compile Include="Migrations\201902272119063_7omar.Designer.cs">
+      <DependentUpon>201902272119063_7omar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902280743195_migwig.cs" />
+    <Compile Include="Migrations\201902280743195_migwig.Designer.cs">
+      <DependentUpon>201902280743195_migwig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -220,12 +225,11 @@
     <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ViewModels\FeedsViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Controllers\FeedController.cs" />
-    <Compile Include="Models\ViewModels\PersonViewModel.cs" />
+    <Compile Include="Models\ViewModels\NavigateViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -283,7 +287,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Feed\Feeds.cshtml" />
+    <Content Include="Views\Feed\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
@@ -313,9 +317,11 @@
     <Content Include="Views\Account\RedirectLogin.cshtml" />
     <Content Include="Views\Shared\_PartialContainerSkill.cshtml" />
     <Content Include="Views\Shared\_PartialContainerExp.cshtml" />
+    <Content Include="Views\Shared\_PartialProfileContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Parent\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -331,11 +337,14 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902261604597_nitwithabd.resx">
-      <DependentUpon>201902261604597_nitwithabd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902272112018_nitwit.resx">
+      <DependentUpon>201902272112018_nitwit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902261606533_nit5ara.resx">
-      <DependentUpon>201902261606533_nit5ara.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902272119063_7omar.resx">
+      <DependentUpon>201902272119063_7omar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902280743195_migwig.resx">
+      <DependentUpon>201902280743195_migwig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

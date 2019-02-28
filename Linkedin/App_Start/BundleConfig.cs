@@ -41,7 +41,8 @@ namespace Linkedin
                       "~/Content/site.css",
                       "~/Content/stylesheet.css",
                       "~/Content/style.css",
-                      "~/Content/boot4.css"
+                      "~/Content/boot4.css",
+                      "~/Content/stylesheetbody.css"
                       ));
 
 

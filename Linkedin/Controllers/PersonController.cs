@@ -10,31 +10,18 @@ using System.Web.Mvc;
 
 namespace Linkedin.Controllers
 {
-    public class PersonController : Controller
+    [Authorize]
+    public class PersonController : ParentController
     {
-        public UnitOfWork u;
-        public SkillManager skillMang;
-        public ExperienceManager expMang;
-        public ApplicationUserManager manager;
 
-
-        public PersonController()
-        {
-            u = UnitOfWork.Instance;
-            skillMang = u.GetManager<SkillManager>();
-            expMang = u.GetManager<ExperienceManager>();
-
-        }
-
-
-        // GET: Feed
-        [Authorize]
         public ActionResult Index(PersonViewModel model)
         {
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
             model.ApplicationUser = user;
             model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
             model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+
+
             if (Request.IsAjaxRequest())
             {
                 if (model.IsExp)
@@ -75,22 +62,42 @@ namespace Linkedin.Controllers
 
         public ActionResult Save(PersonViewModel model)
         {
-            if (model.IsExp)
+            var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+            model.ApplicationUser = user;
+            model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+            model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+
+            if (ModelState.IsValid)
             {
-                model.Experience.Id = model.ExperienceID;
-                model.Experience.Fk_ApplicationUserID = model.ID;
-                expMang.Update(model.Experience);
+                if (model.IsExp)
+                {
+                    model.Experience.Id = model.ExperienceID;
+                    model.Experience.Fk_ApplicationUserID = model.ID;
+                    expMang.Update(model.Experience);
+                    model.ExperienceID = 0;
+                    model.SkillID = 0;
+                    return PartialView("_PartialContainerExp", model);
+                }
+                else
+                {
+                    model.Skill.Id = model.SkillID;
+                    model.Skill.Fk_ApplicationUserID = model.ID;
+                    skillMang.Update(model.Skill);
+                    model.ExperienceID = 0;
+                    model.SkillID = 0;
+                    return PartialView("_PartialContainerSkill", model);
+                }
+
             }
             else
             {
-                model.Skill.Id = model.SkillID;
-                model.Skill.Fk_ApplicationUserID = model.ID;
-                skillMang.Update(model.Skill);
+                if (model.IsExp)
+                    return PartialView("_PartialContainerExp", model);
+                else
+                    return PartialView("_PartialContainerSkill", model);
             }
-            model.ExperienceID = 0;
-            model.SkillID = 0;
-            return RedirectToAction("Index", model);
         }
+
 
 
 
@@ -114,6 +121,9 @@ namespace Linkedin.Controllers
                 model.Skill = skillMang.GetAllBind().Find(e => e.Id == model.SkillID);
                 return PartialView("_PartialContainerSkill", model);
             }
+
+
+
         }
 
 

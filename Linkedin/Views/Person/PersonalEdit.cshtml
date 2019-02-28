@@ -1,5 +1,6 @@
 ﻿@model PersonViewModel
 <link rel="stylesheet" href="~/Content/infoauthstylesheet.css">
+
 <div class="main-container">
     <div class="profile-container">
         <div class="personal-container">
@@ -35,9 +36,19 @@
                 </div>
                 <div class="right-side">
                     <div class="fa fa-users icon"></div><span id="marginleft10">
-                        @{
-                            <span>0</span>
-                        } Connection
+                        @*@{ if (Model.ApplicationUser != null && Model.ApplicationUser.Friends != null)
+                            {
+                                if (Model.ApplicationUser.Friends.Count == 0)
+                                {
+                                <span>0</span>
+                                }
+                            }
+                            else
+                            {
+                                <span>@Model.ApplicationUser.Friends.Count</span>
+                            }
+
+                            } Connection*@
                     </span>
                 </div>
             </div>
@@ -52,4 +63,6 @@
 
 @Html.Partial("_PartialAddSkill", Model)
 @Html.Partial("_PartialAddExp", Model)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/jqueryabs")

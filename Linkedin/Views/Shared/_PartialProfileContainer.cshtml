@@ -1,0 +1,60 @@
+﻿@model FeedsViewModel
+
+
+<div class="profile-container">
+    <div class="personal-container">
+        <div class="profile-background"></div>
+        <div>
+            <img class="profile-img" src="~/Resource/pic.png" width="70px" height="70px" />
+        </div>
+        <div class="welcome-container">Welcome @Model.ApplicationUser.FirstName</div>
+        <div class="connections">
+            <div class="text-container">
+                <div class="txt">
+                    Connections :
+                </div>
+
+                <div class="txt-num">
+
+                    @{
+                        @*if (Model.ApplicationUser != null && Model.ApplicationUser.Friends != null)
+                        {
+                            if (Model.ApplicationUser.Friends.Count == 0)
+                            {
+                                <span>0</span>
+                            }
+                        }
+                        else
+                        {
+                            <span>@Model.ApplicationUser.Friends.Count</span>
+                        }*@
+
+                    }
+
+                </div><br>
+                <div class="txt">Who viewed this profile :</div>
+                <div class="txt-num">10</div>
+            </div>
+
+        </div>
+        <div><a href="" class="form control free-cnt-top-12">Update Profile</a></div>
+    </div>
+
+    <div class="current-info">
+        <div class="current-work">
+            <div class="work-img">
+                <img src="~/Resource/pic.png" alt="" width="50px" height="50px">
+            </div>
+            <div class="work-txt">
+                <span>TCB Consultants</span>
+            </div>
+        </div>
+
+        <div class="activity">
+            <div class="txt free-cnt-top-18">Page Activity :</div>
+            <div class="txt-num free-cnt-top-18">10</div>
+        </div>
+        <div class="txt-center"><a href="" class="form control free-cnt-top-9">Share Update</a></div>
+    </div>
+
+</div>

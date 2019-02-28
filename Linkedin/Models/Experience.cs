@@ -17,7 +17,6 @@ namespace Linkedin.Models
         public int StartYear { get; set; }
 
         [Required]
-
         public int EndYear { get; set; }
 
         [Required]

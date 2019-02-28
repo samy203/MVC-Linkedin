@@ -1,8 +1,10 @@
-﻿<head>
-   <link  rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"  id="bootstrap-css">
+﻿@model NavigateViewModel
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/Content/stylesheet.css">
 </head>
+
 
 <body>
     <nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
@@ -25,7 +27,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index","Home")">
+                    <a class="nav-link" href="@Url.Action("Index", "Feed", Model)">
                         <i class="fa fa-home icon"></i><br>
                         <span class="icon-text">Home</span>
                     </a>
@@ -65,7 +67,7 @@
 
 
                 <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("About","Home")">
+                    <a class="nav-link" href="@Url.Action("Index","Person",Model)">
                         <i class="fa fa-user icon"></i><br>
                         <span class="icon-text">profile</span>
                     </a>
@@ -84,9 +86,11 @@
             </ul>
         </div>
     </nav>
+
+
     @Scripts.Render("~/bundles/profileFnc")
     @RenderBody()
-   
+
 
 </body>
 

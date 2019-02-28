@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Linkedin.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,13 +7,13 @@ using System.Web.Mvc;
 
 namespace Linkedin.Models.ViewModels
 {
-    public class FeedController : Controller
+    [Authorize]
+    public class FeedController : ParentController
     {
-       
-        public ActionResult Index()
+
+        public ActionResult Index(FeedsViewModel model)
         {
-            FeedsViewModel vm = new FeedsViewModel();
-            return View("Feeds", vm);
+            return View(model);
         }
     }
 }

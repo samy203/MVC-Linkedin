@@ -7,7 +7,7 @@
 <head>
     <link type="text/css" rel="stylesheet" href="~/Content/style.css" />
 </head>
-<body>
+
     <div class="main">
         <center>
             @using (Html.BeginForm("RegisterInterface", "Account", new { role = "form"}))
@@ -96,7 +96,9 @@
             </center>
 
         </div>
+
     </div>
 
-</body>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
 

@@ -25,7 +25,7 @@ namespace Linkedin.Models
         public List<Experience> Experiences { get; set; }
 
 
-        //public List<ApplicationUser> Friends { get; set; }
+        //public List<Friend> Friends { get; set; }
 
 
         public List<Skill> Skills { get; set; }

@@ -7,13 +7,13 @@ namespace Linkedin.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class nit5ara : IMigrationMetadata
+    public sealed partial class _7omar : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(nit5ara));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_7omar));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902261606533_nit5ara"; }
+            get { return "201902272119063_7omar"; }
         }
         
         string IMigrationMetadata.Source

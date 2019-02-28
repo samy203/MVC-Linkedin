@@ -5,10 +5,20 @@ using System.Web;
 
 namespace Linkedin.Models.ViewModels
 {
-    public class PersonViewModel
+    public class NavigateViewModel
     {
         public ApplicationUser ApplicationUser { get; set; }
         public string ID { get; set; }
+
+    }
+
+    public class FeedsViewModel:NavigateViewModel
+    {
+
+    }
+
+    public class PersonViewModel:NavigateViewModel
+    {
         public Skill Skill { get; set; }
         public List<Skill> Skills { get; set; }
         public Experience Experience { get; set; }
@@ -16,11 +26,4 @@ namespace Linkedin.Models.ViewModels
         public int SkillID { get; set; }
         public bool IsExp { get; set; }
     }
-
-    public class SimplifiedPersonViewModel
-    {
-        public string Email { get; set; }
-        public Skill Skill { get; set; }
-    }
-
 }

@@ -206,17 +206,9 @@
     <Compile Include="Layers\Data Access\ApplicationDbContext.cs" />
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
-    <Compile Include="Migrations\201902272112018_nitwit.cs" />
-    <Compile Include="Migrations\201902272112018_nitwit.Designer.cs">
-      <DependentUpon>201902272112018_nitwit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902272119063_7omar.cs" />
-    <Compile Include="Migrations\201902272119063_7omar.Designer.cs">
-      <DependentUpon>201902272119063_7omar.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902280743195_migwig.cs" />
-    <Compile Include="Migrations\201902280743195_migwig.Designer.cs">
-      <DependentUpon>201902280743195_migwig.cs</DependentUpon>
+    <Compile Include="Migrations\201902281033522_nitwit.cs" />
+    <Compile Include="Migrations\201902281033522_nitwit.Designer.cs">
+      <DependentUpon>201902281033522_nitwit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
@@ -318,6 +310,8 @@
     <Content Include="Views\Shared\_PartialContainerSkill.cshtml" />
     <Content Include="Views\Shared\_PartialContainerExp.cshtml" />
     <Content Include="Views\Shared\_PartialProfileContainer.cshtml" />
+    <Content Include="Views\Shared\_PartialFriendContainer.cshtml" />
+    <Content Include="Views\Shared\_PartialPostContainer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -337,14 +331,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902272112018_nitwit.resx">
-      <DependentUpon>201902272112018_nitwit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902272119063_7omar.resx">
-      <DependentUpon>201902272119063_7omar.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902280743195_migwig.resx">
-      <DependentUpon>201902280743195_migwig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902281033522_nitwit.resx">
+      <DependentUpon>201902281033522_nitwit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -17,17 +17,21 @@
                 <div class="txt-num">
 
                     @{
-                        @*if (Model.ApplicationUser != null && Model.ApplicationUser.Friends != null)
+                        if (Model.ApplicationUser != null)
                         {
-                            if (Model.ApplicationUser.Friends.Count == 0)
+                            if (Model.ApplicationUser.Friends != null)
+                            {
+                                <span>@Model.ApplicationUser.Friends.Count</span>
+                            }
+                            else
                             {
                                 <span>0</span>
                             }
                         }
                         else
                         {
-                            <span>@Model.ApplicationUser.Friends.Count</span>
-                        }*@
+                            <span>0</span>
+                        }
 
                     }
 

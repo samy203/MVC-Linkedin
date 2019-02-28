@@ -16,6 +16,7 @@ namespace Linkedin.Controllers
 
         public ActionResult Index(PersonViewModel model)
         {
+
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
             model.ApplicationUser = user;
             model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
@@ -33,6 +34,8 @@ namespace Linkedin.Controllers
             {
                 return View("PersonalEdit", model);
             }
+
+
         }
 
 

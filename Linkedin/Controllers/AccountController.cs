@@ -374,8 +374,8 @@ namespace Linkedin.Controllers
             return View(model);
         }
 
-        // POST: /Account/LogOff
-        //         [HttpPost]
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
@@ -461,7 +461,7 @@ namespace Linkedin.Controllers
                     PersonViewModel vm = new PersonViewModel();
                     vm.ID = signedUser.Id;
                     vm.ApplicationUser = signedUser;
-                return RedirectToAction("Index", "Person", vm);
+                    return RedirectToAction("Index", "Person", vm);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.Failure:
@@ -487,7 +487,10 @@ namespace Linkedin.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Feed");
+                    var vm = new PersonViewModel();
+                    vm.ApplicationUser = user;
+                    vm.ID = user.Id;
+                    return RedirectToAction("Index", "Person",vm);
                 }
                 AddErrors(result);
             }

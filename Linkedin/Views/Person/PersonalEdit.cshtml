@@ -36,19 +36,25 @@
                 </div>
                 <div class="right-side">
                     <div class="fa fa-users icon"></div><span id="marginleft10">
-                        @*@{ if (Model.ApplicationUser != null && Model.ApplicationUser.Friends != null)
+                        @{
+                            if (Model.ApplicationUser != null)
                             {
-                                if (Model.ApplicationUser.Friends.Count == 0)
+                                if (Model.ApplicationUser.Friends != null)
                                 {
-                                <span>0</span>
+                                    <span>@Model.ApplicationUser.Friends.Count </span>
+                                }
+                                else
+                                {
+                                    <span>0 </span>
                                 }
                             }
                             else
                             {
-                                <span>@Model.ApplicationUser.Friends.Count</span>
+                                <span>0 </span>
                             }
-
-                            } Connection*@
+                            
+                        }
+                         Connections
                     </span>
                 </div>
             </div>

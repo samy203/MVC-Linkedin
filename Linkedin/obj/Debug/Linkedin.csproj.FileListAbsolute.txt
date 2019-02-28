@@ -143,5 +143,3 @@ E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.pdb
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.nitwit.resources
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
-E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations._7omar.resources
-E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.migwig.resources

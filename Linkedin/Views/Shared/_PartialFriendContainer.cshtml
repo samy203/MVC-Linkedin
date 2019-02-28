@@ -1,0 +1,38 @@
+﻿@model FeedsViewModel
+
+
+<div class="friends-container">
+
+    <div class="friends-header">
+        <span class="font-18">Suggested Connections</span>
+    </div>
+
+
+
+    <!-- foreach friend-->
+    @foreach (var user in Model.Users)
+    {
+        <div class="friends-elements">
+            <div class="sug-frnd-data">
+                <img class="frnd-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
+                <div class="frnd-name">
+                    <div>@user.FirstName</div>
+                </div>
+
+                <button class="fa fa-plus-square add-friend-btn font-30" onclick="redirectToAction(@user.Id)"></button>
+            </div>
+        </div>
+    }
+    <!-- end foreach-->
+
+    <script>
+
+        //function redirectToAction()
+        //{
+        //    window.location.replace("");
+        //}
+
+    </script>
+
+</div>
+

@@ -375,12 +375,13 @@ namespace Linkedin.Controllers
         }
 
         // POST: /Account/LogOff
-        [HttpPost]
+        //         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            Session.Abandon();
+            return RedirectToAction("Interface");
         }
 
         // GET: /Account/ExternalLoginFailure
@@ -459,6 +460,7 @@ namespace Linkedin.Controllers
                 case SignInStatus.Success:
                     PersonViewModel vm = new PersonViewModel();
                     vm.ID = signedUser.Id;
+                    vm.ApplicationUser = signedUser;
                 return RedirectToAction("Index", "Person", vm);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

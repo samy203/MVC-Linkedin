@@ -13,6 +13,12 @@ namespace Linkedin.Models.ViewModels
 
         public ActionResult Index(FeedsViewModel model)
         {
+            if (model.ApplicationUser == null)
+            {
+                var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+                model.ApplicationUser = user;
+            }
+
             return View(model);
         }
     }

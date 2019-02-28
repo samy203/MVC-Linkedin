@@ -19,7 +19,7 @@ namespace Linkedin.Models
 
         [Key, Column(Order = 1)]
         [ForeignKey("Post")]
-        public string Fk_PostID { get; set; }
+        public int Fk_PostID { get; set; }
 
         [Required]
         public string Content { get; set; }

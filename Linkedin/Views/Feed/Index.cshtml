@@ -1,0 +1,23 @@
+﻿@model FeedsViewModel
+
+
+<link rel="stylesheet" href="~/Content/stylesheetbody.css">
+
+<div class="main-container">
+   
+
+    @Html.Partial("_PartialProfileContainer", Model)
+
+
+    @Html.Partial("_PartialPostContainer", Model)
+
+        
+    @Html.Partial("_PartialFriendContainer", Model)
+
+                                        
+</div>
+    @Scripts.Render("~/bundles/profileFnc")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryabs")
+    <script>AddLineUnder(0)</script>

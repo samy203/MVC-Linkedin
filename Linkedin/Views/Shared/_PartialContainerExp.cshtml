@@ -1,0 +1,72 @@
+﻿@model PersonViewModel
+@{
+    AjaxOptions ajaxOpts = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "exps",
+        InsertionMode = InsertionMode.Replace
+    };
+}
+
+
+<div class="experience-container" id="exps">
+    @{
+        if (Model.ApplicationUser != null && Model.ApplicationUser.Experiences != null)
+        {
+            foreach (Experience exp in Model.ApplicationUser.Experiences)
+            {
+                if (Model.ExperienceID == -1 || Model.ExperienceID != exp.Id)
+                {
+                    <div class="experience-entity">
+                        <img class="experience-img" src="~/Resource/pic.png" alt="" width="70px" height="70px">
+                        <div class="experience-data com-nam">@exp.Content</div>
+                        <div class="experience-data">From:</div>
+                        <div class="experience-data bor-left">@exp.StartYear</div>
+                        <div class="experience-data">To :</div>
+                        <div class="experience-data bor-left">@exp.EndYear</div>
+                        <div class="experience-data experience-edit">
+                            @Ajax.ActionLink("Edit", "Edit", "Person", new { ID = Model.ApplicationUser.Id, IsExp = true, ExperienceID = exp.Id }, ajaxOpts, new { @class = "edit-btn btn btn-default msg-btn", style = "color: #000000;" })
+                            @Ajax.ActionLink("Delete", "Delete", "Person", new { ID = Model.ApplicationUser.Id, IsExp = true, ExperienceID = exp.Id }, ajaxOpts, new { @class = "edit-btn btn btn-default msg-btn", style = "color: #000000;" })
+                        </div>
+                    </div>
+
+                }
+                else
+                {
+                    using (Ajax.BeginForm("Save", "Person", ajaxOpts))
+                    {
+                        var x = Model;
+                        @Html.HiddenFor(e => e.IsExp)
+                        @Html.HiddenFor(e => e.ExperienceID)
+                        @Html.HiddenFor(e => e.ID)
+                        <div class="experience-entity">
+                            <img class="experience-img" src="~/Resource/pic.png" alt="" width="70px" height="70px">
+                            <div class="experience-data com-nam">
+                                @Html.TextBoxFor(e => e.Experience.Content, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Experience.Content, "", new { style = "font-size:12px ; color:red" })
+                            </div>
+                            <div class="experience-data">From:</div>
+                            <div class="experience-data bor-left">
+                                @Html.TextBoxFor(e => e.Experience.StartYear, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Experience.StartYear, "", new { style = "font-size:12px ; color:red" })
+                            </div>
+                            <div class="experience-data">To :</div>
+                            <div class="experience-data bor-left">
+                                @Html.TextBoxFor(e => e.Experience.EndYear, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(e => e.Experience.EndYear, "", new { style = "font-size:12px ; color:red" })
+                            </div>
+                            <div class="experience-data experience-edit">
+                                <input type="submit" value="Save" class="edit-btn btn btn-default msg-btn" style="color: #000000;" />
+                                @Ajax.ActionLink("Cancel", "Index", new { Id = Model.ApplicationUser.Id, IsExp = true }, ajaxOpts, new { @class = "edit-btn btn btn-default msg-btn", style = "color: #000000;" })
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        }
+    }
+</div>
+
+
+
+@Scripts.Render("~/bundles/jquery")

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Linkedin.Models;
 using Linkedin.Layers.BL.Managers;
+using Linkedin.Models.ViewModels;
 
 namespace Linkedin.Controllers
 {
@@ -78,7 +79,7 @@ namespace Linkedin.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
+            ApplicationUser signedUser = UserManager.FindByEmail(model.LoginEmail);
             var result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -94,7 +95,7 @@ namespace Linkedin.Controllers
                     return View(model);
             }
         }
-                     
+
         // GET: /Account/VerifyCode
         [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
@@ -151,7 +152,7 @@ namespace Linkedin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.FirstName, Email = model.LoginEmail };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -373,13 +374,14 @@ namespace Linkedin.Controllers
             return View(model);
         }
 
-        // POST: /Account/LogOff
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            Session.Abandon();
+            return RedirectToAction("Interface");
         }
 
         // GET: /Account/ExternalLoginFailure
@@ -413,60 +415,84 @@ namespace Linkedin.Controllers
         [AllowAnonymous]
         public ActionResult Interface()
         {
-            InterfaceViewModel vm = new InterfaceViewModel();
+            RegisterViewModel vm = new RegisterViewModel();
             return View("Interface", vm);
         }
+
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> LoginInterface(InterfaceViewModel model, string returnUrl)
+        public async Task<ActionResult> RedirectLogin(LoginViewModel model)
         {
-            model.IsActionLogin();
-
-            if ((!ModelState.IsValidField("Email")) || (!ModelState.IsValidField("Password")))
-            {
-                return View("Interface",model);
-            }
-
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            ApplicationUser signedUser = UserManager.FindByEmail(model.Email);
+            ApplicationUser signedUser = UserManager.FindByEmail(model.LoginEmail);
             var result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    PersonViewModel vm = new PersonViewModel();
+                    vm.ID = signedUser.Id;
+                    return RedirectToAction("Index", "Person", vm);
                 case SignInStatus.Failure:
+                    if ((ModelState.IsValidField("Email")) && (ModelState.IsValidField("Password")))
+                    {
+                        ModelState.AddModelError("password", "The email or password is incorrect");
+                    }
+                    return View(model);
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
-                    model.LoginFailed();
-                    return View("Interface",model);
+                    return null;
             }
+
         }
-               
+
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-
-        public async Task<ActionResult> RegisterInterface(InterfaceViewModel model)
+        public async Task<ActionResult> LoginInterface(LoginViewModel model, string returnUrl)
         {
-            model.IsActionRegister();
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            ApplicationUser signedUser = UserManager.FindByEmail(model.LoginEmail);
+            var result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    PersonViewModel vm = new PersonViewModel();
+                    vm.ID = signedUser.Id;
+                    vm.ApplicationUser = signedUser;
+                    return RedirectToAction("Index", "Person", vm);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.Failure:
+                    ModelState.AddModelError("password", "The email or password is incorrect");
+                    return View("RedirectLogin", model);
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return null;
+            }
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterInterface(RegisterViewModel model)
+        {
+            //model.IsActionRegister();
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+                var user = new ApplicationUser { UserName = model.FirstName, Email = model.LoginEmail, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Home");
+                    var vm = new PersonViewModel();
+                    vm.ApplicationUser = user;
+                    vm.ID = user.Id;
+                    return RedirectToAction("Index", "Person",vm);
                 }
-                //AddErrors(result);
+                AddErrors(result);
             }
 
             return View("Interface", model);
@@ -489,10 +515,13 @@ namespace Linkedin.Controllers
         {
             foreach (var error in result.Errors)
             {
-                ModelState.AddModelError("", error);
+                if (error.Contains("Name"))
+                    ModelState.AddModelError("FirstName", error);
+                else if (error.Contains("Email"))
+                    ModelState.AddModelError("Email", error);
+
             }
         }
-
         private ActionResult RedirectToLocal(string returnUrl)
         {
             if (Url.IsLocalUrl(returnUrl))

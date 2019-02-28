@@ -1,0 +1,52 @@
+﻿@model PersonViewModel
+@{
+    AjaxOptions ajaxOpts = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "skillz",
+        InsertionMode = InsertionMode.Replace
+    };
+}
+<div class="skills-container" id="skillz">
+
+    <div class="title">Skills</div>
+    @{ if (Model.ApplicationUser != null && Model.ApplicationUser.Skills != null)
+        {
+            foreach (Skill skill in Model.ApplicationUser.Skills)
+            {
+                if (Model.SkillID == -1 || Model.SkillID != skill.Id)
+                {
+                    <div class="skill-intity edit">
+                        <div class="skill-name">@skill.Content</div>
+                    </div>
+                    <div class="opr-btn edit edit-panel">
+                        @Ajax.ActionLink("Edit", "Edit", "Person", new { ID = Model.ApplicationUser.Id, IsExp = false, SkillID = skill.Id }, ajaxOpts, new { @class = "edit-btn btn btn-default msg-btn", style = "color: #000000;" })
+                        @Ajax.ActionLink("Delete", "Delete", "Person", new { ID = Model.ApplicationUser.Id, IsExp = false, SkillID = skill.Id }, ajaxOpts, new { @class = "edit-btn btn btn-default msg-btn", style = "color: #000000;" })
+                    </div>
+                }
+
+                else
+                {
+                    using (Ajax.BeginForm("Save", "Person", ajaxOpts))
+                    {
+                        @Html.HiddenFor(e => e.IsExp)
+                        @Html.HiddenFor(e => e.SkillID)
+                        @Html.HiddenFor(e => e.ID)
+                        <div class="skill-intity edit">
+                            <div class="skill-name">
+                            @Html.TextBoxFor(e => e.Skill.Content, new { @class = "form-control" ,style="line-height: 3.75" })
+                            @Html.ValidationMessageFor(e => e.Skill.Content, "", new { style = "font-size:12px ; color:red" })
+                            </div>
+                        </div>
+                        <div class="opr-btn edit edit-panel">
+                            <input type="submit" value="Save" class="edit-btn btn btn-default msg-btn" style="color: #000000;" />
+                            @Ajax.ActionLink("Cancel", "Index", new { Id = Model.ApplicationUser.Id, IsExp = false }, ajaxOpts, new { @class = "edit-btn btn btn-default msg-btn", style = "color: #000000;" })
+                        </div>
+                    }
+                }
+            }
+        }
+    }
+</div>
+
+@Scripts.Render("~/bundles/jquery")

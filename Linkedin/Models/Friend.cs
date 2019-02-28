@@ -10,18 +10,15 @@ namespace Linkedin.Models
     [Table("Friend")]
     public class Friend
     {
-        [Key, Column(Order = 0)]
+        [Key]
+        public int Id { get; set; }
+
+
         [ForeignKey("ApplicationUser")]
         public string Fk_ApplicationUserID { get; set; }
 
+
         public ApplicationUser ApplicationUser { get; set; }
-
-        [Key, Column(Order = 1)]
-        [ForeignKey("ApplicationUserFriend")]
-        public string Fk_ApplicationFriendID { get; set; }
-
-        public ApplicationUser ApplicationUserFriend { get; set; }
-
 
     }
 }

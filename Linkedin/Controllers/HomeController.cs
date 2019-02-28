@@ -9,16 +9,12 @@ namespace Linkedin.Controllers
     public class HomeController : Controller
     {
         [Authorize]
-        public ActionResult Index()
-        {
-            return View("Feeds");
-        }
-
         public ActionResult About()
         {
             return View("PersonalEdit");
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

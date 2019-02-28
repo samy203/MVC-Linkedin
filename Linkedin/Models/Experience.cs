@@ -11,13 +11,12 @@ namespace Linkedin.Models
     public class Experience
     {
         [Key]
-        public string ExperienceID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public int StartYear { get; set; }
 
         [Required]
-
         public int EndYear { get; set; }
 
         [Required]

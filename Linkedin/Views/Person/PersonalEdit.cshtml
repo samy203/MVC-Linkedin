@@ -1,0 +1,74 @@
+﻿@model PersonViewModel
+<link rel="stylesheet" href="~/Content/infoauthstylesheet.css">
+
+<div class="main-container">
+    <div class="profile-container">
+        <div class="personal-container">
+            <div class="profile-background"></div>
+            <img src="~/Resource/pic.png" class="profile-img" alt="">
+            <div class="info-container">
+                <div class="left-side">
+                    <div class="personal-data">
+                        <div class="name">@Model.ApplicationUser.FirstName</div>
+                        <div class="job">
+                            @{
+                                if (Model.ApplicationUser.Experiences != null && Model.ApplicationUser.Experiences.Count > 0)
+                                {
+                                    @Model.ApplicationUser.Experiences[0].Content
+                                }
+                                else
+                                {
+                                    <span>Seeking a decent job for a living</span>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="opr-btn">
+                        <button type="button" class="btn btn-default msg-btn" data-toggle="modal" data-target="#myModal2">
+                            Add Experience
+                        </button>
+                    </div>
+                    <div class="opr-btn">
+                        <button type="button" class="btn btn-default msg-btn" data-toggle="modal" data-target="#myModal">
+                            Add Skill
+                        </button>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="fa fa-users icon"></div><span id="marginleft10">
+                        @{
+                            if (Model.ApplicationUser != null)
+                            {
+                                if (Model.ApplicationUser.Friends != null)
+                                {
+                                    <span>@Model.ApplicationUser.Friends.Count </span>
+                                }
+                                else
+                                {
+                                    <span>0 </span>
+                                }
+                            }
+                            else
+                            {
+                                <span>0 </span>
+                            }
+                            
+                        }
+                         Connections
+                    </span>
+                </div>
+            </div>
+        </div>
+        @Html.Partial("_PartialContainerExp", Model)
+        @Html.Partial("_PartialContainerSkill", Model)
+
+
+        <script>AddLineUnder(5)</script>
+    </div>
+</div>
+
+@Html.Partial("_PartialAddSkill", Model)
+@Html.Partial("_PartialAddExp", Model)
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryabs")

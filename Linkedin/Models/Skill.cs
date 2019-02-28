@@ -11,7 +11,7 @@ namespace Linkedin.Models
     public class Skill
     {
         [Key]
-        public string SkillID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Content { get; set; }

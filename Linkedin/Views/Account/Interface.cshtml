@@ -1,103 +1,42 @@
-﻿@model InterfaceViewModel
+﻿@model RegisterViewModel
 @{
     ViewBag.Title = "Log in";
-    bool registerCallBack = Model.IsRegister;
-    bool loginCallBack = Model.IsLogin;
-    Layout = null;
+    Layout = "~/Views/Shared/_PartialLogin.cshtml";
 }
-
 
 <head>
     <link type="text/css" rel="stylesheet" href="~/Content/style.css" />
 </head>
-<body>
-    <section id="loginForm">
-        <div class="header">
-            <div id="logo" class="header"> <img src="~/Resource/logo.png" /> </div>
 
-            @using (Html.BeginForm("LoginInterface", "Account", FormMethod.Post, new { role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-
-                <div id="form1" class="header">
-                    @Html.TextBoxFor(m => m.Email, new { style = "width:200px;height:25px;margin-bottom:3.5px", placeholder = "Email" })
-                    @if (loginCallBack)
-                    {
-                        @Html.ValidationMessageFor(m => m.Email, "", new { style = "font-size:12px ; color:red" })
-                    }
-
-                </div>
-                <div class="header" id="form2">
-
-                    @Html.PasswordFor(m => m.Password, new { style = "width:200px;height:25px;margin-bottom:3.5px", placeholder = "Password" })
-                    @{
-                        if (loginCallBack)
-                        {
-                            if (Model.IsLoginFailed)
-                            {
-                                <span class="text-danger" style="font-size:12px;color:red">Wrong E-mail or password.</span>
-                            }
-                            else
-                            {
-                                @Html.ValidationMessageFor(m => m.Password, "", new { style = "font-size:12px ; color:red" })
-                            }
-                        }
-                    }
-
-                </div>
-
-
-                <div class="header" id="submit1">
-                    <input type="submit" value="Log in" id="submit1" />
-                </div>
-            }
-        </div>
-    </section>
     <div class="main">
         <center>
-
-            @using (Html.BeginForm("RegisterInterface", "Account", FormMethod.Post, new { role = "form" }))
+            @using (Html.BeginForm("RegisterInterface", "Account", new { role = "form"}))
             {
                 @Html.AntiForgeryToken()
                 <div class="box">
                     <div id="info1"> Be great at what you do</div><br>
                     <div id="info2"> Get started - it's free.</div><br>
-
-
-
-
                     <div id="info3">First Name</div>
                     <div class="reg-segment" style="height:12%;">
-                    @Html.TextBoxFor(m => m.FirstName, new { style = "width:350px; height:30px;" })
-
-                    @if (registerCallBack)
-                    {
+                        @Html.TextBoxFor(m => m.FirstName, new { style = "width:350px; height:30px;" })              
                         @Html.ValidationMessageFor(m => m.FirstName, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
-                    }
+                      
                     </div>
-
-
-
-
                     <div id="info3">Last Name</div>
                     <div class="reg-segment" style="height:12%;">
-                    @Html.TextBoxFor(m => m.LastName, new { style = "width:350px; height:30px;" })
-                    @if (registerCallBack)
-                    {
+                        @Html.TextBoxFor(m => m.LastName, new { style = "width:350px; height:30px;" })
                         @Html.ValidationMessageFor(m => m.LastName, "", new { style = "font-size:12px ; color:red; padding-top:3px; " })
-                    }
+                        
                     </div>
-                   
+
                     <div id="info3">Email</div>
 
 
 
                     <div class="reg-segment" style="height:12%;">
-                    @Html.TextBoxFor(m => m.Email, new { style = "width:350px; height:30px;" })
-                    @if (registerCallBack)
-                    {
-                        @Html.ValidationMessageFor(m => m.Email, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
-                    }
+                        @Html.TextBoxFor(m => m.LoginEmail, new { style = "width:350px; height:30px;" })
+                        @Html.ValidationMessageFor(m => m.LoginEmail, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
+                      
                     </div>
 
 
@@ -105,11 +44,9 @@
 
                     <div id="info3">Password (6 or more characters)</div>
                     <div class="reg-segment" style="height:12%;">
-                    @Html.PasswordFor(m => m.Password, new { style = "width:350px; height:30px;" }) 
-                    @if (registerCallBack)
-                    {
+                        @Html.PasswordFor(m => m.Password, new { style = "width:350px; height:30px;" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
-                    }
+                   
                     </div>
 
 
@@ -122,7 +59,6 @@
                 </div>
             }
         </center>
-
         <div class="sub-footer">
             <center>
                 @using (Html.BeginForm("Interface", "Account", FormMethod.Post, new { role = "form" }))
@@ -163,10 +99,6 @@
 
     </div>
 
-
-
-</body>
-@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    
-}
+

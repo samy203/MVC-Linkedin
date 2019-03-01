@@ -1,4 +1,5 @@
 ﻿using Linkedin.Controllers;
+using Linkedin.Layers.BL.Managers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,19 @@ namespace Linkedin.Models.ViewModels
 
                 var userList = u.context.Users.ToList();
 
+                var friendShipList = u.GetManager<FriendManager>().GetAllBind().ToList();
+
+                var modelFriendList = friendShipList.Where(fr => fr.Fk_ApplicationUserID == model.ID);
+
+                List<string> friends = new List<string>();
+
+                foreach (var friend in modelFriendList)
+                {
+                    friends.Add(friend.FriendUserID);
+                }
+
+                userList.RemoveAll(u => friends.Contains(u.Id) || u.Id == model.ID);
+
                 model.Users = new List<ApplicationUser>();
 
                 for (int i = 0; i < 10; i++)
@@ -29,8 +43,7 @@ namespace Linkedin.Models.ViewModels
                     {
                         if (userList.Count > i)
                         {
-                            if (userList[i].Id != model.ID)
-                                model.Users.Add(userList[i]);
+                            model.Users.Add(userList[i]);
                         }
                     }
                     else
@@ -39,16 +52,58 @@ namespace Linkedin.Models.ViewModels
                     }
                 }
 
-
+                if (model.FriendsId == null)
+                    model.FriendsId = new List<string>();
 
             }
 
             return View(model);
         }
 
-        public ActionResult AddFriend(FeedsViewModel model)
-        {
 
+        [HttpPost]
+        public ActionResult Add(FeedsViewModel model)
+        {
+            var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+
+            var friendUser = u.context.Users.Where(e => e.Id == model.FriendID).FirstOrDefault();
+
+            Friend f = new Friend();
+
+            f.Fk_ApplicationUserID = user.Id;
+
+            f.FriendUserID = friendUser.Id;
+
+            u.GetManager<FriendManager>().Add(f);
+
+            f = new Friend();
+            f.FriendUserID = user.Id;
+            f.Fk_ApplicationUserID = friendUser.Id;
+
+            u.GetManager<FriendManager>().Add(f);
+
+            var friendShipList = u.GetManager<FriendManager>().GetAllBind().ToList();
+
+            var modelFriendList = friendShipList.Where(fr => fr.Fk_ApplicationUserID == model.ID);
+
+            List<string> friends = new List<string>();
+
+            foreach (var friend in modelFriendList)
+            {
+                friends.Add(friend.FriendUserID);
+            }
+
+            model.FriendsId = friends;
+
+            model.ApplicationUser = user;
+
+            var userList = u.context.Users.ToList();
+
+            userList.RemoveAll(l => l.Id == model.ID);
+
+            model.Users = userList;
+
+            return PartialView("_PartialFriendContainer", model);
         }
 
     }

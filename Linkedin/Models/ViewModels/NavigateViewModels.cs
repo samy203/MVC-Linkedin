@@ -21,7 +21,8 @@ namespace Linkedin.Models.ViewModels
 
         public List<Post> Posts { get; set; }
 
-
+        public string FriendID { get; set; }
+        public List<string> FriendsId { get; set; }
 
     }
 

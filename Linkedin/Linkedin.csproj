@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201902281033522_nitwit.Designer.cs">
       <DependentUpon>201902281033522_nitwit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902281355564_mig.cs" />
+    <Compile Include="Migrations\201902281355564_mig.Designer.cs">
+      <DependentUpon>201902281355564_mig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -333,6 +337,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201902281033522_nitwit.resx">
       <DependentUpon>201902281033522_nitwit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902281355564_mig.resx">
+      <DependentUpon>201902281355564_mig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

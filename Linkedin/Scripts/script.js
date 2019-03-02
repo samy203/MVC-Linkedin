@@ -26,12 +26,17 @@ function ToggleActive(){
 
 for (let i =0; i<commentbtn.length ;i++){
 
-  commentbtn[i].addEventListener("click", function() {
+    commentbtn[i].addEventListener("click", function ()
+    {
     var panel = comments[i];
-    if (panel.style.maxHeight){
+    if (panel.style.maxHeight)
+    {
       panel.style.maxHeight = null;
-    } else {
+    }
+    else
+    {
       panel.style.maxHeight = panel.scrollHeight + "px";
     } 
+
   });
 }

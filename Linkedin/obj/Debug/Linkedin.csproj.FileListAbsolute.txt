@@ -65,9 +65,12 @@ D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.Dependen
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.WindowsServer.xml
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.Web.xml
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.CoreCompileInputs.cache
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.dll
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.pdb
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.mig2.resources
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\ApplicationInsights.config
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Linkedin.dll.config
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Linkedin.dll
@@ -137,11 +140,4 @@ E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AI.WindowsServer.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AI.Web.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.dll
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.pdb
-E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
-E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.mig2.resources
-E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.newMig.resources
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.duh.resources
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.woohnitwit.resources

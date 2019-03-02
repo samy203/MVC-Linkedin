@@ -16,7 +16,7 @@ namespace Linkedin.Models
 
         public int Likes { get; set; }
 
-        List<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime? Date { get; set; }

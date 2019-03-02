@@ -1,9 +1,12 @@
 ﻿namespace Linkedin.Layers.Repository
 {
+    using System;
     using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using System.Linq.Expressions;
+
 
     public class Repository<TEntity, TContext> : IRepository<TEntity> where TEntity : class
         where TContext : DbContext
@@ -34,6 +37,11 @@
         public List<TEntity> GetAllBind()
         {
             return entitySet.ToList();
+        }
+
+        public List<TEntity> GetAllBindInclude<TProperty>(Expression<Func<TEntity, TProperty>> path)
+        {
+            return entitySet.Include(path).ToList();
         }
 
         public TEntity GetById(params object[] id)

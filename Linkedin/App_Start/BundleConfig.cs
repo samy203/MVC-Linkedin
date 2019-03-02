@@ -15,6 +15,9 @@ namespace Linkedin
                       "~/Scripts/jquery.unobtrusive-ajax.js",
                        "~/Scripts/bootjs.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/feedscript").Include(
+                       "~/Scripts/feedscript.js"));
+
 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

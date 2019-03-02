@@ -1,0 +1,59 @@
+﻿@model FeedsViewModel
+
+@{
+    AjaxOptions ajaxopts = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "commentz",
+        InsertionMode = InsertionMode.Replace
+    };
+}
+
+
+
+<div class="LC-tab">
+    <button class="fa fa-thumbs-up like-btn" onclick="addLike()"> Like</button>
+    <button class="fa fa-commenting like-btn combtn"> Comment</button>
+</div>
+
+
+<div class="comments" id="commentz">
+
+    <div class="user-comment">
+
+        @{using (Ajax.BeginForm("AddComment", "Feed", ajaxopts))
+            {
+                var x = Model;
+                Model.CommentContent = null;
+                <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+                @Html.HiddenFor(m => m.ID)
+                @Html.HiddenFor(m => m.CurrentPost.Id)
+                @Html.TextBoxFor(m => m.CommentContent, new { @class = "user-text-comment form-control" })
+                <input type="submit" class="form-control comment-submit" onclick="addComment()" value="Comment">
+
+            }
+        }
+    </div>
+
+    
+
+        @{
+            if (Model.CurrentPost.Comments != null)
+            {
+                foreach (var comment in Model.CurrentPost.Comments)
+                {
+                    <div class="other-comment">
+                        <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+                        <div class="comment-posting-data">
+                            <span class="font-14">@comment.ApplicationUser.FirstName @comment.ApplicationUser.LastName</span><br>
+                            <span class="font-12">8h</span>
+                        </div>
+                        <div class="comment-posting-text font-14">
+                            @comment.Content
+                        </div>
+                    </div>
+
+                }
+            }
+        }
+</div>

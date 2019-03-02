@@ -189,7 +189,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ConnectionsController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -207,14 +206,6 @@
     <Compile Include="Layers\Data Access\ApplicationDbContext.cs" />
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
-    <Compile Include="Migrations\201902281426346_duh.cs" />
-    <Compile Include="Migrations\201902281426346_duh.Designer.cs">
-      <DependentUpon>201902281426346_duh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902281440521_woohnitwit.cs" />
-    <Compile Include="Migrations\201902281440521_woohnitwit.Designer.cs">
-      <DependentUpon>201902281440521_woohnitwit.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -233,7 +224,6 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\connectionsheet.css" />
     <Content Include="Content\infoauthstylesheet.css" />
     <Content Include="Content\infostylesheet.css" />
     <Content Include="Content\style.css" />
@@ -246,11 +236,9 @@
     <Content Include="ReleaseNotes.css" />
     <Content Include="Resource\1.png" />
     <Content Include="Resource\icon.png" />
-    <Content Include="Resource\inst.jpg" />
     <Content Include="Resource\linkedin-back.jpg" />
     <Content Include="Resource\logo.png" />
     <Content Include="Resource\pic.PNG" />
-    <Content Include="Resource\propic.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -259,6 +247,7 @@
     <Content Include="Content\boot4.css" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootjs.js" />
+    <Content Include="Scripts\feedscript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -320,8 +309,7 @@
     <Content Include="Views\Shared\_PartialProfileContainer.cshtml" />
     <Content Include="Views\Shared\_PartialFriendContainer.cshtml" />
     <Content Include="Views\Shared\_PartialPostContainer.cshtml" />
-    <Content Include="Views\Shared\_PartialConnections.cshtml" />
-    <Content Include="Views\Connections\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -339,14 +327,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902281426346_duh.resx">
-      <DependentUpon>201902281426346_duh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902281440521_woohnitwit.resx">
-      <DependentUpon>201902281440521_woohnitwit.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,13 +1,18 @@
 ﻿@model FeedsViewModel
 
-
-<div class="feeds-container">
+<div class="feeds-container" id="postz">
 
 
     <div class="wannabe-post">
         <div class="post-area">
-            <textarea name="" class="form-control post-text" cols="30" rows="10" placeholder="Write a Post"></textarea>
-            <input type="submit" class="form-control post-submit" value="Post">
+            @{
+                using (Html.BeginForm("AddPost", "Feed"))
+                {
+                    @Html.HiddenFor(m => m.ID)
+                    @Html.TextAreaFor(m => m.PostContent, new { name = "", @class = "form-control post-text", cols = "30", rows = "10", placeholder = "Write a Post" })
+                    <input type="submit" class="form-control post-submit" value="Post">
+                }
+            }
         </div>
     </div>
 
@@ -22,52 +27,37 @@
             </div>
         </div>
 
+    <!--For each post in server.-->
 
+    @{
+        foreach (var post in Model.Posts)
+        {
+            Model.CurrentPost = post;
 
-        <!--For each post in server.-->
-        <div class="post-content">
-            Scorias El Habeed and Sayed El Habood decided to do some Habd mind works in MVC project so dumb and sad and mad and crap and shit and hbood and hbeed
-        </div>
-
-        <div class="LC-tab">
-            <button class="fa fa-thumbs-up like-btn"> Like</button>
-            <button class="fa fa-commenting like-btn combtn"> Comment</button>
-        </div>
+            <div class="posts">
 
 
 
-        <div class="comments">
-            <div class="user-comment">
-                <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
-                <input type="text" class="user-text-comment form-control">
-                <input type="submit" class="form-control comment-submit" value="Comment">
-            </div>
-
-
-            <!--Foreach comment in post here-->
-
-
-            <div class="other-comment">
-                <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
-                <div class="comment-posting-data">
-                    <span class="font-14">Nignog El nagnoog</span><br>
-                    <span class="font-12">8h</span>
+                <div class="poster-data">
+                    <img class="poster-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
+                    <div class="poster-name">
+                        <div>@post.ApplicationUser.FirstName @post.ApplicationUser.LastName</div>
+                        <div style="font-size: 12px">8 hr ago</div>
+                    </div>
                 </div>
-                <div class="comment-posting-text font-14">AYYY WER IZ DA BANANA MAN, WE APES NEED SOME GUT FOOD SO WE REPRODUCE AND FUCK SAYED AZZ</div>
+
+
+
+
+                <div class="post-content">
+                    @post.Content
+                </div>
+                @Html.Partial("_PartialComments", Model)
             </div>
-
-
-            <!-- end foreach-->
-
-        </div>
-
-
-    </div>
-    <!-- end foreach-->
+        }
+    }
 
 
 
 
 </div>
-
-

@@ -16,12 +16,12 @@ namespace Linkedin.Controllers
 
         public ActionResult Index(PersonViewModel model)
         {
-
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
             model.ApplicationUser = user;
             model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
             model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
-
+            var friendList = u.GetManager<FriendManager>().GetAllBind().Where(f => f.Fk_ApplicationUserID == model.ID).ToList();
+            model.ApplicationUser.Friends = friendList;
 
             if (Request.IsAjaxRequest())
             {
@@ -60,6 +60,7 @@ namespace Linkedin.Controllers
                 return PartialView("_PartialContainerSkill", model);
             }
         }
+
 
 
 

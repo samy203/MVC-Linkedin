@@ -12,7 +12,7 @@
 
 
 <div class="LC-tab">
-    <button class="fa fa-thumbs-up like-btn" onclick="addLike()"> Like</button>
+    <button class="fa fa-thumbs-up like-btn" onclick=""> Like</button>
     <button class="fa fa-commenting like-btn combtn"> Comment</button>
 </div>
 
@@ -25,23 +25,26 @@
         <input type="submit" class="form-control comment-submit" value="Comment" id="cmnt_@Model.CurrentPost.Id" onclick="addComment({CurrentPostID:'@Model.CurrentPost.Id',ID:'@Model.ID'})">
     </div>
 
-        @{
-            if (Model.CurrentPost.Comments != null)
+    @{
+        if (Model.CurrentPost.Comments != null)
+        {
+            foreach (var comment in Model.CurrentPost.Comments)
             {
-                foreach (var comment in Model.CurrentPost.Comments)
-                {
-                    <div class="other-comment">
-                        <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
-                        <div class="comment-posting-data">
-                            <span class="font-14">@comment.ApplicationUser.FirstName @comment.ApplicationUser.LastName</span><br>
-                            <span class="font-12">8h</span>
-                        </div>
-                        <div class="comment-posting-text font-14">
-                            @comment.Content
-                        </div>
+                <div class="other-comment">
+                    <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+                    <div class="comment-posting-data">
+                        @{
+                            string s = comment.ApplicationUser.FirstName + " " + comment.ApplicationUser.LastName;
+                        }
+                        <span class="font-14">@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = comment.ApplicationUser.Id, ID = Model.ID }, new { style = "color:Black" })</span><br>
+                        <span class="font-12">@comment.Date</span>
                     </div>
+                    <div class="comment-posting-text font-14">
+                        @comment.Content
+                    </div>
+                </div>
 
-                }
             }
         }
+    }
 </div>

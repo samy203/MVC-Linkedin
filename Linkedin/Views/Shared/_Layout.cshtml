@@ -5,8 +5,6 @@
     <link rel="stylesheet" href="~/Content/stylesheet.css">
 </head>
 
-
-
 <body>
 
     <nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
@@ -17,7 +15,8 @@
             <div class="input-group">
                 @Html.TextBoxFor(m => m.SearchIndex, new { @class = "form-control", placeholder="Search" })
                 <div class="search-btn">
-                    <a class="btn btn-default ffs" type="submit" href="@Url.Action("index","Search",Model)"><i class="fa fa-search" style="padding-top:4px"></i></a>
+                    <a class="btn btn-default ffs" type="submit" href="@Url.Action("index","Search",Model)">
+                    <i class="fa fa-search" style="padding-top:4px"></i></a>
                 </div>
             </div>
         </form>

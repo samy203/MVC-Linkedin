@@ -17,7 +17,7 @@
     </div>
 
     <div class="seperator"></div>
-    
+
     <!--For each post in server.-->
 
     @{
@@ -35,8 +35,36 @@
                         @{
                             string s = post.ApplicationUser.FirstName + " " + post.ApplicationUser.LastName;
                         }
-                        <div>@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = post.ApplicationUser.Id,ID=Model.ID },new { style="color:Black"})</div>
-                        <div style="font-size: 12px">@post.Date</div>
+                        <div>@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = post.ApplicationUser.Id, ID = Model.ID }, new { style = "color:Black" })</div>
+                        <div style="font-size: 12px">
+                            @{
+                                if (Math.Abs((post.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
+                                {
+                                    <span>now</span>
+                                }
+                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalSeconds) < 60)
+                                {
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
+                                }
+                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalMinutes) < 60)
+                                {
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
+                                }
+                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalHours) < 24)
+                                {
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
+                                }
+                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalDays) < 365)
+                                {
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
+                                }
+                                else
+                                {
+                                    @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
+                                }
+                            }
+
+                        </div>
                     </div>
                 </div>
 
@@ -48,7 +76,7 @@
                 </div>
                 @Html.Partial("_PartialComments", Model)
             </div>
-        }
+                                }
     }
 
 

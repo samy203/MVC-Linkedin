@@ -1,10 +1,8 @@
 ﻿using Linkedin.Layers.BL.Managers;
 using Linkedin.Models;
 using Linkedin.Models.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Linkedin.Controllers

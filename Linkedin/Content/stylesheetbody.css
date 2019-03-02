@@ -361,3 +361,6 @@ cursor: pointer;
 .font-30{
   font-size: 40px;
 }
+.liked {
+    background: skyblue ;
+}

@@ -11,6 +11,7 @@ namespace Linkedin.Models.ViewModels
 
         public string ID { get; set; }
 
+        public string SearchIndex { get; set; }
     }
 
     public class FeedsViewModel : NavigateViewModel
@@ -58,8 +59,13 @@ namespace Linkedin.Models.ViewModels
         public int SkillID { get; set; }
         public bool IsExp { get; set; }
 
-        public string RequiredUSerID { get; set; }
+        public string RequiredUserID { get; set; }
 
         public ApplicationUser TargetUser { get; set; }
+    }
+    public class SearchViewModel:NavigateViewModel
+    {
+        public List<ApplicationUser> SearchedUsers { get; set; }
+        public string SearchInput { get; set; }
     }
 }

@@ -172,8 +172,14 @@ namespace Linkedin.Controllers
 
         public ActionResult DisplayUser(PersonViewModel model)
         {
-            model.TargetUser = u.context.Users.Where(c => c.Id == model.RequiredUSerID).FirstOrDefault();
+            model.TargetUser = u.context.Users.Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
             model.ApplicationUser = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+            if(model.TargetUser ==model.ApplicationUser)
+            {
+                PersonViewModel user = new PersonViewModel();
+                user.ID = model.TargetUser.Id;
+               return RedirectToAction ("Index","Person",user);
+            }
             return View("Personal", model);
         }
 

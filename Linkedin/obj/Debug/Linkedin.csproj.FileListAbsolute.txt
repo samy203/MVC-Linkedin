@@ -69,8 +69,6 @@ D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.CoreCompileInputs.cache
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.dll
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.pdb
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.mig2.resources
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\ApplicationInsights.config
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Linkedin.dll.config
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Linkedin.dll

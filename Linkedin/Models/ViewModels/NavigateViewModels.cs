@@ -41,6 +41,12 @@ namespace Linkedin.Models.ViewModels
 
         public string CommentContent { get; set; }
 
+
+        public string DeletedFriendID { get; set; }
+
+
+        public int CurrentPostId { get; set; }
+
     }
 
     public class PersonViewModel : NavigateViewModel

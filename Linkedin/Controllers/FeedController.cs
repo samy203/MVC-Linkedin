@@ -125,14 +125,15 @@ namespace Linkedin.Models.ViewModels
         [HttpPost]
         public ActionResult AddComment(FeedsViewModel model)
         {
-            model.CurrentPost = postMang.GetAllBindInclude(p => p.Comments).Where(p => p.Id == model.CurrentPost.Id).ToList().FirstOrDefault();
+            model.CurrentPost = postMang.GetAllBindInclude(p => p.Comments).Where(p => p.Id == model.CurrentPostId).ToList().FirstOrDefault();
             Comment comment = new Comment();
             comment.Date = DateTime.Now;
-            comment.Fk_PostID = model.CurrentPost.Id;
+            comment.Fk_PostID = model.CurrentPostId;
             comment.Fk_ApplicationUserID = model.ID;
             comment.Content = model.CommentContent;
             commentMang.Add(comment);
-            return PartialView("_PartialComments", model);
+            model.Posts = postMang.GetAllBindInclude(p => p.Comments).ToList();
+            return PartialView("_PartialPostContainer", model);
         }
 
 

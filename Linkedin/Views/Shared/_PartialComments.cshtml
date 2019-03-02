@@ -17,25 +17,13 @@
 </div>
 
 
-<div class="comments" id="commentz">
+<div class="comments" id="commentz_@Model.CurrentPost.Id">
 
     <div class="user-comment">
-
-        @{using (Ajax.BeginForm("AddComment", "Feed", ajaxopts))
-            {
-                var x = Model;
-                Model.CommentContent = null;
-                <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
-                @Html.HiddenFor(m => m.ID)
-                @Html.HiddenFor(m => m.CurrentPost.Id)
-                @Html.TextBoxFor(m => m.CommentContent, new { @class = "user-text-comment form-control" })
-                <input type="submit" class="form-control comment-submit" onclick="addComment()" value="Comment">
-
-            }
-        }
+        <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+        <input type="text" class="user-text-comment form-control" name="txtBox1" id="txtBox_@Model.CurrentPost.Id">
+        <input type="submit" class="form-control comment-submit" value="Comment" id="cmnt_@Model.CurrentPost.Id" onclick="addComment({CurrentPostID:'@Model.CurrentPost.Id',ID:'@Model.ID'})">
     </div>
-
-    
 
         @{
             if (Model.CurrentPost.Comments != null)

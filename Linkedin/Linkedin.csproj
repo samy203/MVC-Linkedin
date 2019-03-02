@@ -189,6 +189,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ConnectionsController.cs" />
     <Compile Include="Controllers\ParentController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -310,6 +311,8 @@
     <Content Include="Views\Shared\_PartialFriendContainer.cshtml" />
     <Content Include="Views\Shared\_PartialPostContainer.cshtml" />
     <Content Include="Views\Shared\_PartialComments.cshtml" />
+    <Content Include="Views\Connections\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialConnections.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

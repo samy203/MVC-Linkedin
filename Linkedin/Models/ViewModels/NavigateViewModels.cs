@@ -21,8 +21,9 @@ namespace Linkedin.Models.ViewModels
 
         public List<Post> Posts { get; set; }
 
+        public List<ApplicationUser> FriendsData { get; set; }
 
-
+        public string DeletedFriendID { get; set; }
     }
 
     public class PersonViewModel : NavigateViewModel

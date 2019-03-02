@@ -17,6 +17,9 @@ namespace Linkedin.Models
         [ForeignKey("ApplicationUser")]
         public string Fk_ApplicationUserID { get; set; }
 
+        [Required]
+        public string FriendUserID { get; set; }
+
 
         public ApplicationUser ApplicationUser { get; set; }
 

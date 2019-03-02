@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Linkedin.Layers.BL.Managers;
 
 namespace Linkedin.Models.ViewModels
 {
@@ -48,8 +49,10 @@ namespace Linkedin.Models.ViewModels
 
         public ActionResult AddFriend(FeedsViewModel model)
         {
-
+            return null;
         }
+
+      
 
     }
 }

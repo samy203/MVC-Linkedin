@@ -65,7 +65,6 @@ D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.Dependen
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.WindowsServer.xml
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\bin\Microsoft.AI.Web.xml
-D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.CoreCompileInputs.cache
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.dll
 D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.pdb
@@ -142,3 +141,7 @@ E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csproj.GenerateReso
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.mig2.resources
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.Migrations.newMig.resources
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.duh.resources
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.csproj.GenerateResource.Cache
+D:\Informatics Stuff\ITI\ASP.Net\FinalProject\Linkedin\obj\Debug\Linkedin.Migrations.woohnitwit.resources

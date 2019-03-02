@@ -1,0 +1,46 @@
+﻿@model FeedsViewModel
+<link rel="stylesheet" href="~/Content/connectionsheet.css">
+@{
+    AjaxOptions ajaxOpts = new AjaxOptions()
+    {
+        HttpMethod = "POST",
+        UpdateTargetId = "connectionz",
+        InsertionMode = InsertionMode.Replace
+    };
+}
+
+@{
+    using (Ajax.BeginForm("Delete", "Connections", ajaxOpts))
+    {
+
+        if (Model.ApplicationUser != null && Model.ApplicationUser.Skills != null)
+        {
+            foreach (ApplicationUser friend in Model.FriendsData)
+            {
+
+                <div class="experience-entity">
+                    <img class="experience-img" src="~/Resource/propic.png" alt="" width="70px" height="70px">
+                    <div class="experience-data com-nam">
+                        <div>@friend.FirstName @friend.LastName</div>
+                        <div>
+                            @{if (friend.Experiences != null)
+                                {
+                                    @friend.Experiences[0]
+                                }
+                                else
+                                {
+
+                                }
+                            }
+
+                        </div>
+                    </div>
+                    @*<button type="submit" class="btn btn-default remove-btn">Remove</button>*@
+                    @Ajax.ActionLink("Remove", "Delete", "Connections", new { ID = Model.ApplicationUser.Id, DeletedFriendID = friend.Id }, ajaxOpts, new { @class = "btn btn-default remove-btn" })
+                </div>
+            }
+        }
+    }
+}
+
+@Scripts.Render("~/bundles/jquery")

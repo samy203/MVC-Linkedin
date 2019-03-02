@@ -46,7 +46,7 @@
                         <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
                         <div class="comment-posting-data">
                             <span class="font-14">@comment.ApplicationUser.FirstName @comment.ApplicationUser.LastName</span><br>
-                            <span class="font-12">8h</span>
+                            <span class="font-12">@comment.Date</span>
                         </div>
                         <div class="comment-posting-text font-14">
                             @comment.Content

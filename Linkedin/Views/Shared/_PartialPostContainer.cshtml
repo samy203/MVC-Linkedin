@@ -1,15 +1,14 @@
 ﻿@model FeedsViewModel
 
 <div class="feeds-container" id="postz">
-
-
     <div class="wannabe-post">
         <div class="post-area">
             @{
-                using (Html.BeginForm("AddPost", "Feed"))
+                using (Html.BeginForm("AddPost", "Feed", new { id = "postForm" }))
                 {
+                    Model.PostContent = null;
                     @Html.HiddenFor(m => m.ID)
-                    @Html.TextAreaFor(m => m.PostContent, new { name = "", @class = "form-control post-text", cols = "30", rows = "10", placeholder = "Write a Post" })
+                    @Html.TextAreaFor(m => m.PostContent, new { name = "Search", @class = "form-control post-text", cols = "30", rows = "10", placeholder = "Write a Post" })
                     <input type="submit" class="form-control post-submit" value="Post">
                 }
             }
@@ -40,27 +39,27 @@
                             @{
                                 if (Math.Abs((post.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
                                 {
-                                    <span>now</span>
+                            <span>now</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalSeconds) < 60)
                                 {
-                                    @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
+                            @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalMinutes) < 60)
                                 {
-                                    @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
+                            @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalHours) < 24)
                                 {
-                                    @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
+                            @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalDays) < 365)
                                 {
-                                    @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
+                            @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
                                 }
                                 else
                                 {
-                                    @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
+                            @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
                                 }
                             }
 

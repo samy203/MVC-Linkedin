@@ -1,20 +1,21 @@
 ﻿var comments = document.getElementsByClassName("comments")
+let stringList = [];
 //////////////////////////////////////////////////////////////////////////////////////////
 //Adding a like.
 function addLike() {
     console.log('One Like');
-    
-}
 
+}
 //////////////////////////////////////////////////////////////////////////////////////////
 //Subscribe an enter event for each comment.
 
- //Queries over the elements with the id starting with txtBox_
+//Queries over the elements with the id starting with txtBox_
 $('*[id*=txtBox_]').each(function () {
 
     //Getting each full id of them then removing the portion of "txtBox_"
+    stringList.push($(this).attr('id'));
+
     let x = $(this).attr('id').substring(7);
-    
 
     //Adding a function to the comment 
     $(this).keyup(function (event) {
@@ -24,6 +25,17 @@ $('*[id*=txtBox_]').each(function () {
     });
 
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//Refreshing all the text boxes.
+window.onload = function () {
+    document.querySelector("#postContent").value = '';
+    stringList.forEach(function (item,index) {
+        document.querySelector('#'+item).value = '';
+
+    })
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////
 //Adding a comment.
 function addComment(obj) {
@@ -58,6 +70,11 @@ function addComment(obj) {
                     if (event.keyCode === 13) {
                         $('#cmnt_' + x).click();
                     }
+
+                    window.onload = function () {
+                        document.querySelector("#" + id).value = '';
+                    }
+
                 });
 
             });
@@ -87,3 +104,5 @@ function redirectToAction(obj) {
     });
 }
 ///////////////////////////////////////////////////////////////////////////
+
+

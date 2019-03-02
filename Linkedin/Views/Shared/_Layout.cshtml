@@ -13,24 +13,16 @@
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
         <a href="#" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
 
-        <form class="navbar-form" role="search">
+        @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { id = "searchForm", @class = "navbar-form", role = "search" }))
+        {
             <div class="input-group">
-
-                @{
-                    using (Html.BeginForm("Index","Search", FormMethod.Post))
-                    {
-                        @Html.TextBoxFor(m => m.SearchIndex, new { @class = "form-control", placeholder = "Search" })
-                        @Html.HiddenFor(m => m.ID)
-                        <div class="search-btn">
-                            @*<a class="btn btn-default ffs" href="" type="submit"><i class="fa fa-search" style="padding-top:4px"></i></a>*@
-                            <input class="btn btn-default ffs" type="submit" value="" />
-                        </div>
-                    }
-                }
-
-
+                @Html.TextBoxFor(m => m.SearchIndex, new { @class = "form-control", placeholder = "Search" })
+                @Html.HiddenFor(m => m.ID)
+                <div class="search-btn">
+                    <input class="btn btn-default ffs" type="submit" value="" />
+                </div>
             </div>
-        </form>
+        }
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -103,16 +95,9 @@
             </ul>
         </div>
     </nav>
-
-
-    @*@Scripts.Render("~/bundles/profileFnc")*@
+    @Scripts.Render("~/bundles/profileFnc")
     @RenderBody()
-
-
 </body>
-
-
-
 
 
 

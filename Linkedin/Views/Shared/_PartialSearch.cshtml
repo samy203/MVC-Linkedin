@@ -1,49 +1,45 @@
 ﻿@model SearchViewModel
 
 <link rel="stylesheet" href="~/Content/connectionsheet.css">
-@{
 
-    AjaxOptions ajaxOpts = new AjaxOptions()
-    {
-        HttpMethod = "POST",
-        UpdateTargetId = "connectionz",
-        InsertionMode = InsertionMode.Replace
-    };
 
-}
+  
 
 
 @{
-    using (Ajax.BeginForm("Delete", "Connections", ajaxOpts))
+    if (Model.SearchedUsers.Count > 0)
     {
-
-        if (Model.ApplicationUser != null && Model.ApplicationUser.Skills != null)
+        foreach (ApplicationUser user in Model.SearchedUsers)
         {
-            foreach (ApplicationUser friend in Model.SearchedUsers)
-            {
 
-                <div class="experience-entity">
-                    <img class="experience-img" src="~/Resource/propic.png" alt="" width="70px" height="70px">
-                    <div class="experience-data com-nam">
-                        <div>@friend.FirstName @friend.LastName</div>
-                        <div>
-                            @{if (friend.Experiences != null)
-                                {
-                                    @friend.Experiences[0].Content
-                                }
-                                else
-                                {
-                                    <span>Looking for a decent job for a living.</span>
-                                }
+            <div class="experience-entity">
+                <img class="experience-img" src="~/Resource/propic.png" alt="" width="70px" height="70px">
+                <div class="experience-data com-nam">
+                    @{
+                        string s = user.FirstName + " " + user.LastName;
+                    }
+                    <div>@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = user.Id, ID = Model.ID }, new { style = "color:Black" })</div>
+                    <div>
+                        @{if (user.Experiences != null)
+                            {
+                                @user.Experiences[0].Content
                             }
+                            else
+                            {
+                                <span></span>
+                            }
+                        }
 
-                        </div>
                     </div>
-                    @*<button type="submit" class="btn btn-default remove-btn">Remove</button>*@
-                    @Ajax.ActionLink("Remove", "Delete", "Connections", new { ID = Model.ApplicationUser.Id, DeletedFriendID = friend.Id }, ajaxOpts, new { @class = "btn btn-default remove-btn" })
                 </div>
-            }
+            </div>
         }
+
+
+    }
+    else
+    {
+        <div class="experience-entity" style="font-weight:bold;text-align:center;font-size:37px">There is no users with such name</div>
     }
 }
 

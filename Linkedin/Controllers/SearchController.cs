@@ -11,12 +11,12 @@ namespace Linkedin.Controllers
     {
         public ActionResult Index(NavigateViewModel model)
         {
-            SearchViewModel s = new SearchViewModel
-            {
-                SearchInput = model.SearchIndex
-            };
+            SearchViewModel s = new SearchViewModel();
+            s.SearchInput = model.SearchIndex;
+            var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+            s.ApplicationUser = user;
             s.SearchedUsers = u.context.Users.Where(f => f.FirstName.Contains(s.SearchInput) || f.LastName.Contains(s.SearchInput)).ToList();
-            return View();
+            return View(s);
         }
     }
 }

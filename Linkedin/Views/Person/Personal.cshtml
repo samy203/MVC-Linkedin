@@ -1,4 +1,4 @@
-﻿
+﻿@model PersonViewModel
 <link rel="stylesheet" href="~/Content/infostylesheet.css">
 
 
@@ -6,60 +6,83 @@
     <div class="profile-container">
         <div class="personal-container">
             <div class="profile-background"></div>
-            <img src="~/Resource/pic.png" class="profile-img" alt="">
+            <img src="~/Resource/propic.png" class="profile-img" alt="">
             <div class="info-container">
                 <div class="left-side">
                     <div class="personal-data">
-                        <div class="name">Scorias El Habeed</div>
-                        <div class="job">Hbeed at autohabd</div>
-                        <div class="country">Egypt</div>
+                        <div class="name">@Model.TargetUser.FirstName @Model.TargetUser.LastName</div>
+                        <div class="job">
+                            @{
+                                if (Model.TargetUser.Experiences != null && Model.TargetUser.Experiences.Count > 0)
+                                {
+                                    @Model.TargetUser.Experiences[0].Content
+                                }
+                                else
+                                {
+                                    <span></span>
+                                }
+                            }
+                        </div>
                     </div>
                     <div>
                         <button type="submit" class="btn btn-default msg-btn">Add Connection</button>
                     </div>
                 </div>
                 <div class="right-side">
-                    <div class="fa fa-users icon"></div><span id="marginleft10">69 Connection</span>
+                    <div class="fa fa-users icon"></div><span id="marginleft10">
+                        @{
+                            if (Model.TargetUser != null)
+                            {
+                                if (Model.TargetUser.Friends != null)
+                                {
+                                    <span>@Model.TargetUser.Friends.Count </span>
+                                }
+                                else
+                                {
+                                    <span>0 </span>
+                                }
+                            }
+                            else
+                            {
+                                <span>0 </span>
+                            }
+
+                        }
+                        Connection
+                    </span>
                 </div>
             </div>
         </div>
         <div class="experience-container">
-            <div class="experience-entity">
-                <img class="experience-img" src="~/Resource/pic.png" alt="" width="70px" height="70px">
-                <div class="experience-data com-nam">Hbood.inc</div>
-                <div class="experience-data">From:</div>
-                <div class="experience-data bor-left">2015</div>
-                <div class="experience-data">To :</div>
-                <div class="experience-data">2018</div>
-            </div>
-            <div class="experience-entity">
-                <img class="experience-img" src="~/Resource/pic.png" alt="" width="70px" height="70px">
-                <div class="experience-data com-nam">Hbood.inc</div>
-                <div class="experience-data">From:</div>
-                <div class="experience-data bor-left">2015</div>
-                <div class="experience-data">To :</div>
-                <div class="experience-data">2018</div>
-            </div>
-            <div class="experience-entity">
-                <img class="experience-img" src="~/Resource/pic.png" alt="" width="70px" height="70px">
-                <div class="experience-data com-nam">Hbood.inc</div>
-                <div class="experience-data">From:</div>
-                <div class="experience-data bor-left">2015</div>
-                <div class="experience-data">To :</div>
-                <div class="experience-data">2018</div>
-            </div>
+            @{
+                if (Model.TargetUser != null && Model.TargetUser.Experiences != null)
+                {
+                    foreach (Experience exp in Model.TargetUser.Experiences)
+                    {
+                        <div class="experience-entity">
+                            <img class="experience-img" src="~/Resource/inst.jpg" alt="" width="70px" height="70px">
+                            <div class="experience-data com-nam">@exp.Content</div>
+                            <div class="experience-data">From:</div>
+                            <div class="experience-data bor-left">@exp.StartYear</div>
+                            <div class="experience-data">To :</div>
+                            <div class="experience-data">@exp.EndYear</div>
+                        </div>
+                    }
+                }
+            }
         </div>
+
         <div class="skills-container">
             <div class="title">Skills</div>
-            <div class="skill-intity">LeaderShip</div>
-            <div class="skill-intity">Creative Habd</div>
-            <div class="skill-intity">ASP.net</div>
-            <div class="skill-intity">Web Design</div>
-            <div class="skill-intity">Cursing</div>
+            @{
+                if (Model.TargetUser != null && Model.TargetUser.Skills != null)
+                {
+                    foreach (Skill skill in Model.TargetUser.Skills)
+                    {
+                        <div class="skill-intity">@skill.Content</div>
+                    }
+                }
+            }
         </div>
-
     </div>
-
-
-
 </div>

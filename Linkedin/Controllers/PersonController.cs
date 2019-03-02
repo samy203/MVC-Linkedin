@@ -168,5 +168,13 @@ namespace Linkedin.Controllers
         }
 
 
+
+        public ActionResult DisplayUser(PersonViewModel model)
+        {
+            model.TargetUser = u.context.Users.Where(c => c.Id == model.RequiredUSerID).FirstOrDefault();
+            model.ApplicationUser = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+            return View("Personal", model);
+        }
+
     }
 }

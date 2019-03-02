@@ -34,5 +34,8 @@ namespace Linkedin.Models.ViewModels
         public int ExperienceID { get; set; }
         public int SkillID { get; set; }
         public bool IsExp { get; set; }
+
+        public string RequiredUSerID { get; set; }
+        public ApplicationUser TargetUser { get; set; }
     }
 }

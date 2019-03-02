@@ -37,17 +37,27 @@ namespace Linkedin.Controllers
         {
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
 
+
             model.ApplicationUser = user;
+            
 
-            var friendList = u.GetManager<FriendManager>().GetAllBind().Where(f => f.Fk_ApplicationUserID == user.Id).ToList();
+            var toBeDeletedFriend = u.GetManager<FriendManager>().GetAllBind().Where(f => f.FriendUserID== model.DeletedFriendID).FirstOrDefault();
 
-            var toBeDeletedFriend = friendList.Where(f => f.FriendUserID== model.DeletedFriendID).FirstOrDefault();
+
+            var toBeDeletedOtherFriend = u.GetManager<FriendManager>().GetAllBind().Where(f => f.Fk_ApplicationUserID == model.DeletedFriendID).FirstOrDefault();
+
 
             u.context.Friends.Remove(toBeDeletedFriend);
 
+
+            u.context.Friends.Remove(toBeDeletedOtherFriend);
+
+
             u.context.SaveChanges();
 
+
             model.FriendsData = new List<ApplicationUser>();
+
 
             var friendlist = u.GetManager<FriendManager>().GetAllBind().Where(f => f.Fk_ApplicationUserID == user.Id).ToList();
 

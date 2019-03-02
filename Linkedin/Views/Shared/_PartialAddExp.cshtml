@@ -25,15 +25,15 @@
                         @Html.HiddenFor(m => m.ID)
                         @Html.LabelFor(m => m.Experience.Content)
                         @Html.EditorFor(m => m.Experience.Content, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(m => m.Experience.Content,"",new { style = "font-size:12px ; color:red; display:block;" })
+                        @Html.ValidationMessageFor(m => m.Experience.Content, "", new { style = "font-size:12px ; color:red; display:block;" })
 
-                      
+
                         @Html.HiddenFor(m => m.ID)
                         @Html.LabelFor(m => m.Experience.StartYear)
                         @Html.EditorFor(m => m.Experience.StartYear, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(m => m.Experience.StartYear, "", new { style = "font-size:12px ; color:red; display:block;" })
 
-                       
+
                         @Html.HiddenFor(m => m.ID)
                         @Html.LabelFor(m => m.Experience.EndYear)
                         @Html.EditorFor(m => m.Experience.EndYear, new { htmlAttributes = new { @class = "form-control" } })

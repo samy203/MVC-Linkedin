@@ -17,7 +17,7 @@ namespace Linkedin.Controllers
         public PostManager postMang;
         public CommentManager commentMang;
         public FriendManager friendMang;
-
+        public LikeManager likeMang;
 
         public ParentController()
         {
@@ -27,6 +27,7 @@ namespace Linkedin.Controllers
             commentMang = u.GetManager<CommentManager>();
             postMang = u.GetManager<PostManager>();
             friendMang = u.GetManager<FriendManager>();
+            likeMang = u.GetManager<LikeManager>();
         }
 
 

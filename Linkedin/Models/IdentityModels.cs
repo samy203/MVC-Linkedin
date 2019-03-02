@@ -15,22 +15,32 @@ namespace Linkedin.Models
 
         public string FirstName { get; set; }
 
+
+
         public string Description { get; set; }
 
+        
+
         public string LastName { get; set; }
+
 
 
        public List<Comment> Comments { get; set; }
 
 
+
         public List<Experience> Experiences { get; set; }
+
 
 
         public List<Friend> Friends { get; set; }
 
 
+
         public List<Skill> Skills { get; set; }
 
+
+        public List<Like> Likes { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -50,6 +60,7 @@ namespace Linkedin.Models
         public DbSet<Experience> Experiences { get; set; }
         public DbSet<Message> Messages { get; set; }
         public DbSet<Skill> Skills { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
 
 

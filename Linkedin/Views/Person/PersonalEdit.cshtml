@@ -5,11 +5,11 @@
     <div class="profile-container">
         <div class="personal-container">
             <div class="profile-background"></div>
-            <img src="~/Resource/pic.png" class="profile-img" alt="">
+            <img src="~/Resource/propic.png" class="profile-img" alt="">
             <div class="info-container">
                 <div class="left-side">
                     <div class="personal-data">
-                        <div class="name">@Model.ApplicationUser.FirstName</div>
+                        <div class="name">@Model.ApplicationUser.FirstName @Model.ApplicationUser.LastName</div>
                         <div class="job">
                             @{
                                 if (Model.ApplicationUser.Experiences != null && Model.ApplicationUser.Experiences.Count > 0)
@@ -18,7 +18,7 @@
                                 }
                                 else
                                 {
-                                    <span>Seeking a decent job for a living</span>
+                                    <span></span>
                                 }
                             }
                         </div>
@@ -52,9 +52,9 @@
                             {
                                 <span>0 </span>
                             }
-                            
+
                         }
-                         Connections
+                        Connections
                     </span>
                 </div>
             </div>

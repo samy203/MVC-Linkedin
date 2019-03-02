@@ -23,6 +23,7 @@ namespace Linkedin.Models.ViewModels
 
         public List<Post> Posts { get; set; }
 
+        public List<ApplicationUser> FriendsData { get; set; }
 
         public string FriendID { get; set; }
 
@@ -48,5 +49,8 @@ namespace Linkedin.Models.ViewModels
         public int ExperienceID { get; set; }
         public int SkillID { get; set; }
         public bool IsExp { get; set; }
+
+        public string RequiredUSerID { get; set; }
+        public ApplicationUser TargetUser { get; set; }
     }
 }

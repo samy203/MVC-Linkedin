@@ -2,13 +2,16 @@
 
 <link rel="stylesheet" href="~/Content/connectionsheet.css">
 @{
+
     AjaxOptions ajaxOpts = new AjaxOptions()
     {
         HttpMethod = "POST",
         UpdateTargetId = "connectionz",
         InsertionMode = InsertionMode.Replace
     };
+
 }
+
 
 @{
     using (Ajax.BeginForm("Delete", "Connections", ajaxOpts))

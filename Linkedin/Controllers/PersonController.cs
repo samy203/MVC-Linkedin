@@ -1,11 +1,6 @@
 ﻿using Linkedin.Layers.BL.Managers;
-using Linkedin.Layers.Business_Logic.Managers;
-using Linkedin.Models;
 using Linkedin.Models.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Linkedin.Controllers
@@ -13,7 +8,6 @@ namespace Linkedin.Controllers
     [Authorize]
     public class PersonController : ParentController
     {
-
         public ActionResult Index(PersonViewModel model)
         {
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
@@ -30,6 +24,7 @@ namespace Linkedin.Controllers
                 else
                     return PartialView("_PartialContainerSkill", model);
             }
+
             else
             {
                 return View("PersonalEdit", model);

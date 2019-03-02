@@ -53,12 +53,47 @@ namespace Linkedin.Models.ViewModels
                 }
                 if (model.FriendsId == null)
                     model.FriendsId = new List<string>();
-                model.Posts = postMang.GetAllBindInclude(p => p.Comments).ToList();
 
+                model.Posts = NavigatePosts(u, model.ID);
 
             }
 
             return View(model);
+        }
+
+        
+        private List<Post> NavigatePosts(UnitOfWork unit, string userID)
+        {
+            var user = unit.context.Users.Include(u => u.Friends).Include(u => u.Posts).Where(u => u.Id == userID).ToList().FirstOrDefault();
+
+
+            List<string> idList = new List<string>();
+            idList.Add(user.Id);
+            foreach (var friend in user.Friends)
+            {
+                idList.Add(friend.FriendUserID);
+            }
+
+            var posts = u.GetManager<PostManager>().GetAllBindInclude(p => p.Comments).Where(p => idList.Contains(p.Fk_ApplicationUserID)).ToList();
+
+            posts.Sort((post1, post2) => post1.Date.Value.CompareTo(post2.Date.Value));
+            posts.Reverse();
+            List<Post> finalPostList = new List<Post>();
+            for (int i = 0; i < 10; i++)
+            {
+                if ((posts != null))
+                {
+                    if (posts.Count > i)
+                    {
+                        finalPostList.Add(posts[i]);
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return finalPostList;
         }
 
 
@@ -115,11 +150,10 @@ namespace Linkedin.Models.ViewModels
             post.Comments = new List<Comment>();
             postMang.Add(post);
 
-            //Add post navigation
-            model.Posts = postMang.GetAllBindInclude(p => p.Comments).ToList();
-            //
+            model.Posts = NavigatePosts(u, model.ID);
             return RedirectToAction("Index", model);
         }
+
 
 
         [HttpPost]
@@ -132,11 +166,9 @@ namespace Linkedin.Models.ViewModels
             comment.Fk_ApplicationUserID = model.ID;
             comment.Content = model.CommentContent;
             commentMang.Add(comment);
-            model.Posts = postMang.GetAllBindInclude(p => p.Comments).ToList();
+            model.Posts = NavigatePosts(u, model.ID);
             return PartialView("_PartialPostContainer", model);
         }
-
-
-
+                
     }
 }

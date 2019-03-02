@@ -15,10 +15,20 @@
 
         <form class="navbar-form" role="search">
             <div class="input-group">
-                @Html.TextBoxFor(m => m.SearchIndex, new { @class = "form-control", placeholder="Search" })
-                <div class="search-btn">
-                    <a class="btn btn-default ffs" type="submit" href="@Url.Action("index","Search",Model)"><i class="fa fa-search" style="padding-top:4px"></i></a>
-                </div>
+
+                @{
+                    using (Html.BeginForm("Index","Search", FormMethod.Post))
+                    {
+                        @Html.TextBoxFor(m => m.SearchIndex, new { @class = "form-control", placeholder = "Search" })
+                        @Html.HiddenFor(m => m.ID)
+                        <div class="search-btn">
+                            @*<a class="btn btn-default ffs" href="" type="submit"><i class="fa fa-search" style="padding-top:4px"></i></a>*@
+                            <input class="btn btn-default ffs" type="submit" value="" />
+                        </div>
+                    }
+                }
+
+
             </div>
         </form>
 
@@ -82,24 +92,24 @@
 
                 <li class="nav-item">
                     @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                    { 
+                    {
                         @Html.AntiForgeryToken()
                         <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">
                             <i class="fa fa-sign-out icon"></i><br>
                             <span class="icon-text">Sign-out</span>
                         </a>
                     }
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
 
-        @*@Scripts.Render("~/bundles/profileFnc")*@
-                        @RenderBody()
+    @*@Scripts.Render("~/bundles/profileFnc")*@
+    @RenderBody()
 
 
-                    </body>
+</body>
 
 
 

@@ -7,12 +7,15 @@ using System.Web.Mvc;
 
 namespace Linkedin.Controllers
 {
-    public class SearchController : Controller
+    public class SearchController : ParentController
     {
-        // GET: Search
-        public ActionResult Index(SearchViewModel model)
+        public ActionResult Index(NavigateViewModel model)
         {
-            
+            SearchViewModel s = new SearchViewModel
+            {
+                SearchInput = model.SearchIndex
+            };
+            s.SearchedUsers = u.context.Users.Where(f => f.FirstName.Contains(s.SearchInput) || f.LastName.Contains(s.SearchInput)).ToList();
             return View();
         }
     }

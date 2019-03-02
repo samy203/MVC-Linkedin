@@ -95,3 +95,6 @@ border-color: white;
 body{
   background: lightgray;
 }
+.fa-search {
+    font-family: FontAwesome, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}

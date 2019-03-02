@@ -67,5 +67,6 @@ namespace Linkedin.Models.ViewModels
     {
         public List<ApplicationUser> SearchedUsers { get; set; }
         public string SearchInput { get; set; }
+        
     }
 }

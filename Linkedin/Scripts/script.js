@@ -28,6 +28,7 @@ for (let i =0; i<commentbtn.length ;i++){
 
     commentbtn[i].addEventListener("click", function ()
     {
+        console.log(i);
     var panel = comments[i];
     if (panel.style.maxHeight)
     {

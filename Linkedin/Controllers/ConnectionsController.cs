@@ -44,6 +44,7 @@ namespace Linkedin.Controllers
             var toBeDeletedFriend = friendList.Where(f => f.FriendUserID== model.DeletedFriendID).FirstOrDefault();
 
             u.context.Friends.Remove(toBeDeletedFriend);
+
             u.context.SaveChanges();
 
             model.FriendsData = new List<ApplicationUser>();

@@ -17,7 +17,7 @@
     </div>
 
     <div class="seperator"></div>
-
+    
     <!--For each post in server.-->
 
     @{
@@ -43,7 +43,7 @@
                 <div class="post-content">
                     @post.Content
                 </div>
-               @* @Html.Partial("_PartialComments", Model)*@
+                @Html.Partial("_PartialComments", Model)
             </div>
         }
     }

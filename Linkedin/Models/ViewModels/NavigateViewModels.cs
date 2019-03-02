@@ -23,7 +23,9 @@ namespace Linkedin.Models.ViewModels
 
         public List<Post> Posts { get; set; }
 
+
         public List<ApplicationUser> FriendsData { get; set; }
+
 
         public string FriendID { get; set; }
 
@@ -39,7 +41,11 @@ namespace Linkedin.Models.ViewModels
 
         public string CommentContent { get; set; }
 
+
         public string DeletedFriendID { get; set; }
+
+
+        public int CurrentPostId { get; set; }
 
     }
 
@@ -53,6 +59,7 @@ namespace Linkedin.Models.ViewModels
         public bool IsExp { get; set; }
 
         public string RequiredUSerID { get; set; }
+
         public ApplicationUser TargetUser { get; set; }
     }
 }

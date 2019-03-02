@@ -23,26 +23,9 @@
         }
         else
         {
-            break;
+            continue;
         }
     }
 
 </div>
-
-<script>
-    function redirectToAction(obj) {
-        $.ajax({
-            url: '/Feed/Add',
-
-            data: obj,
-
-            success: function (data) {
-                var result = $('<div />').append(data).find('#friendz').html();
-                $('#friendz').html(result);
-            },
-
-            type: 'POST'
-        });
-    }
-</script>
 

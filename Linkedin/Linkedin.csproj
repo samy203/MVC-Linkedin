@@ -206,14 +206,6 @@
     <Compile Include="Layers\Data Access\ApplicationDbContext.cs" />
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
-    <Compile Include="Migrations\201902281033522_nitwit.cs" />
-    <Compile Include="Migrations\201902281033522_nitwit.Designer.cs">
-      <DependentUpon>201902281033522_nitwit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902281355564_mig.cs" />
-    <Compile Include="Migrations\201902281355564_mig.Designer.cs">
-      <DependentUpon>201902281355564_mig.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -255,6 +247,7 @@
     <Content Include="Content\boot4.css" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootjs.js" />
+    <Content Include="Scripts\feedscript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -316,6 +309,7 @@
     <Content Include="Views\Shared\_PartialProfileContainer.cshtml" />
     <Content Include="Views\Shared\_PartialFriendContainer.cshtml" />
     <Content Include="Views\Shared\_PartialPostContainer.cshtml" />
+    <Content Include="Views\Shared\_PartialComments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -333,14 +327,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201902281033522_nitwit.resx">
-      <DependentUpon>201902281033522_nitwit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902281355564_mig.resx">
-      <DependentUpon>201902281355564_mig.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

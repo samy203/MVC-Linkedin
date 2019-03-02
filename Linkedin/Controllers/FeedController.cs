@@ -5,13 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Linkedin.Models.ViewModels
 {
     [Authorize]
     public class FeedController : ParentController
     {
-
         public ActionResult Index(FeedsViewModel model)
         {
             if (model.ApplicationUser == null)
@@ -22,7 +22,7 @@ namespace Linkedin.Models.ViewModels
 
                 var userList = u.context.Users.ToList();
 
-                var friendShipList = u.GetManager<FriendManager>().GetAllBind().ToList();
+                var friendShipList = friendMang.GetAllBind().ToList();
 
                 var modelFriendList = friendShipList.Where(fr => fr.Fk_ApplicationUserID == model.ID);
 
@@ -51,9 +51,10 @@ namespace Linkedin.Models.ViewModels
                         break;
                     }
                 }
-
                 if (model.FriendsId == null)
                     model.FriendsId = new List<string>();
+                model.Posts = postMang.GetAllBindInclude(p => p.Comments).ToList();
+
 
             }
 
@@ -62,29 +63,26 @@ namespace Linkedin.Models.ViewModels
 
 
         [HttpPost]
-        public ActionResult Add(FeedsViewModel model)
+        public ActionResult AddFriend(FeedsViewModel model)
         {
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
 
             var friendUser = u.context.Users.Where(e => e.Id == model.FriendID).FirstOrDefault();
 
             Friend f = new Friend();
-
             f.Fk_ApplicationUserID = user.Id;
-
             f.FriendUserID = friendUser.Id;
 
-            u.GetManager<FriendManager>().Add(f);
+            friendMang.Add(f);
 
             f = new Friend();
             f.FriendUserID = user.Id;
             f.Fk_ApplicationUserID = friendUser.Id;
 
-            u.GetManager<FriendManager>().Add(f);
+            friendMang.Add(f);
 
-            var friendShipList = u.GetManager<FriendManager>().GetAllBind().ToList();
-
-            var modelFriendList = friendShipList.Where(fr => fr.Fk_ApplicationUserID == model.ID);
+            var modelFriendList = friendMang.GetAllBind().ToList()
+                .Where(fr => fr.Fk_ApplicationUserID == model.ID);
 
             List<string> friends = new List<string>();
 
@@ -105,6 +103,39 @@ namespace Linkedin.Models.ViewModels
 
             return PartialView("_PartialFriendContainer", model);
         }
+
+
+        [HttpPost]
+        public ActionResult AddPost(FeedsViewModel model)
+        {
+            Post post = new Post();
+            post.Fk_ApplicationUserID = model.ID;
+            post.Content = model.PostContent;
+            post.Date = DateTime.Now;
+            post.Comments = new List<Comment>();
+            postMang.Add(post);
+
+            //Add post navigation
+            model.Posts = postMang.GetAllBindInclude(p => p.Comments).ToList();
+            //
+            return RedirectToAction("Index", model);
+        }
+
+
+        [HttpPost]
+        public ActionResult AddComment(FeedsViewModel model)
+        {
+            model.CurrentPost = postMang.GetAllBindInclude(p => p.Comments).Where(p => p.Id == model.CurrentPost.Id).ToList().FirstOrDefault();
+            Comment comment = new Comment();
+            comment.Date = DateTime.Now;
+            comment.Fk_PostID = model.CurrentPost.Id;
+            comment.Fk_ApplicationUserID = model.ID;
+            comment.Content = model.CommentContent;
+            commentMang.Add(comment);
+            return PartialView("_PartialComments", model);
+        }
+
+
 
     }
 }

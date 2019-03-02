@@ -17,12 +17,26 @@ namespace Linkedin.Models.ViewModels
     {
         public List<Friend> Friends { get; set; }
 
+
         public List<ApplicationUser> Users { get; set; }
+
 
         public List<Post> Posts { get; set; }
 
+
         public string FriendID { get; set; }
+
+
         public List<string> FriendsId { get; set; }
+
+
+        public Post CurrentPost { get; set; }
+
+
+        public string PostContent { get; set; }
+
+
+        public string CommentContent { get; set; }
 
     }
 

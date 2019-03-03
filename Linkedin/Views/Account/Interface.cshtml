@@ -61,12 +61,12 @@
         </center>
         <div class="sub-footer">
             <center>
-                @using (Html.BeginForm("Interface", "Account", FormMethod.Post, new { role = "form" }))
+                @using (Html.BeginForm("UnAuthIndex", "Search", FormMethod.Post, new { role = "form" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="box2">
-                        Find a colleague: @Html.TextBoxFor(m => m.FirstName, new { style = "width:200px; height:25px;" })
-                        @Html.TextBoxFor(m => m.LastName, new { style = "width:200px; height:25px;" })
+                        Find a colleague: @Html.TextBox("firstName","", new { style = "width:200px; height:25px;" })
+                        @Html.TextBox("lastName","",new { style = "width:200px; height:25px;" })
                         <input type="submit" id="submit2" value="Search" /><br>
                         <p><span style="font-size:12px;">LinkedIn member directory:</span> <span style="color:#0e98f0; font-size:12px;">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z More | Browse by country</span> </p>
                         <hr>

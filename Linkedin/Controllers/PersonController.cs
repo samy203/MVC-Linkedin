@@ -2,6 +2,7 @@
 using Linkedin.Models.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 namespace Linkedin.Controllers
 {
@@ -176,6 +177,13 @@ namespace Linkedin.Controllers
                return RedirectToAction ("Index","Person",user);
             }
             return View("Personal", model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult unAuthDisplayUser(PersonViewModel model)
+        {
+            model.TargetUser = u.context.Users.Include(c=>c.Experiences).Include(c=>c.Skills).Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
+            return View("UnAuthPersonal", model);
         }
 
     }

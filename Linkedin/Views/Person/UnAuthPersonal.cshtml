@@ -1,0 +1,103 @@
+﻿@model PersonViewModel
+
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/Content/infostylesheet.css">
+
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/stylesheet.css">
+</head>
+
+
+<nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <a href="@Url.Action("interface","Account","")" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
+</nav>
+
+<div class="main-container">
+    <div class="profile-container">
+        <div class="personal-container">
+            <div class="profile-background"></div>
+            <img src="~/Resource/propic.png" class="profile-img" alt="">
+            <div class="info-container">
+                <div class="left-side">
+                    <div class="personal-data">
+                        <div class="name">@Model.TargetUser.FirstName @Model.TargetUser.LastName</div>
+                        <div class="job">
+                            @{
+                                if (Model.TargetUser.Experiences != null && Model.TargetUser.Experiences.Count > 0)
+                                {
+                                    @Model.TargetUser.Experiences[0].Content
+                                }
+                                else
+                                {
+                                    <span></span>
+                                }
+                            }
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="right-side">
+                    <div class="fa fa-users icon"></div><span id="marginleft10">
+                        @{
+                            if (Model.TargetUser != null)
+                            {
+                                if (Model.TargetUser.Friends != null)
+                                {
+                                    <span>@Model.TargetUser.Friends.Count </span>
+                                }
+                                else
+                                {
+                                    <span>0 </span>
+                                }
+                            }
+                            else
+                            {
+                                <span>0 </span>
+                            }
+
+                        }
+                        Connection
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="experience-container">
+            @{
+                if (Model.TargetUser != null && Model.TargetUser.Experiences != null)
+                {
+                    foreach (Experience exp in Model.TargetUser.Experiences)
+                    {
+                        <div class="experience-entity">
+                            <img class="experience-img" src="~/Resource/inst.jpg" alt="" width="70px" height="70px">
+                            <div class="experience-data com-nam">@exp.Content</div>
+                            <div class="experience-data">From:</div>
+                            <div class="experience-data bor-left">@exp.StartYear</div>
+                            <div class="experience-data">To :</div>
+                            <div class="experience-data">@exp.EndYear</div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+        <div class="skills-container">
+            <div class="title">Skills</div>
+            @{
+                if (Model.TargetUser != null && Model.TargetUser.Skills != null)
+                {
+                    foreach (Skill skill in Model.TargetUser.Skills)
+                    {
+                        <div class="skill-intity">@skill.Content</div>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

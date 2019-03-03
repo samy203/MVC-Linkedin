@@ -317,6 +317,9 @@
     <Content Include="Views\Shared\_PartialConnections.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Shared\_PartialSearch.cshtml" />
+    <Content Include="Views\Search\UnAuthIndex.cshtml" />
+    <Content Include="Views\Shared\_PartialUnAuthSearch.cshtml" />
+    <Content Include="Views\Person\UnAuthPersonal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

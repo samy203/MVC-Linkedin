@@ -5,7 +5,17 @@
     <div class="profile-container">
         <div class="personal-container">
             <div class="profile-background"></div>
-            <img src="~/Resource/propic.png" class="profile-img" alt="">
+            @{
+                if (Model.Image != null)
+                {
+                    <img src="@Model.Image.Path" class="profile-img" alt="">
+                }
+                else
+                {
+                    <img src="~/Resource/propic.png" class="profile-img" alt="">
+                }
+            }
+
             <div class="info-container">
                 <div class="left-side">
                     <div class="personal-data">
@@ -31,6 +41,11 @@
                     <div class="opr-btn">
                         <button type="button" class="btn btn-default msg-btn" data-toggle="modal" data-target="#myModal">
                             Add Skill
+                        </button>
+                    </div>
+                    <div class="opr-btn">
+                        <button type="button" class="btn btn-default msg-btn" data-toggle="modal" data-target="#myModal3">
+                            Update Photo
                         </button>
                     </div>
                 </div>
@@ -70,6 +85,7 @@
 
 @Html.Partial("_PartialAddSkill", Model)
 @Html.Partial("_PartialAddExp", Model)
+@Html.Partial("_PartialAddImage")
 @Scripts.Render("~/bundles/jquery")
 @Scripts.Render("~/bundles/jqueryval")
 @Scripts.Render("~/bundles/jqueryabs")

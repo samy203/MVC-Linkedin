@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
 using Linkedin.Models;
+using System.IO;
+using System.Web;
+using System;
 
 namespace Linkedin.Controllers
 {
@@ -14,6 +17,7 @@ namespace Linkedin.Controllers
         {
             var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
             model.ApplicationUser = user;
+            model.Image = u.context.Images.Where(f => f.ImageId == model.ID).FirstOrDefault();
             model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
             model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
             var friendList = u.GetManager<FriendManager>().GetAllBind().Where(f => f.Fk_ApplicationUserID == model.ID).ToList();
@@ -220,6 +224,25 @@ namespace Linkedin.Controllers
             friendMang.Add(f);
 
             return View("Personal", model);
+        }
+
+        [HttpPost]
+        public ActionResult AddImage(PersonViewModel model)
+        {
+            var user = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
+            model.ApplicationUser = user;
+            model.ApplicationUser.Skills = skillMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+            model.ApplicationUser.Experiences = expMang.GetAllBind().Where(s => s.Fk_ApplicationUserID == user.Id).ToList();
+            string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+            string extension = Path.GetExtension(model.ImageFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            model.Image = new Image();
+            model.Image.ImageId = model.ID;
+            model.Image.Path = "/Resource/" + fileName;
+            fileName = Path.Combine(Server.MapPath("/Resource"),fileName);
+            model.ImageFile.SaveAs(fileName);
+            u.GetManager<ImageManager>().Update(model.Image);
+            return View("PersonalEdit", model);
         }
 
     }

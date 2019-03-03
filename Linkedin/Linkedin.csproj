@@ -201,6 +201,7 @@
     <Compile Include="Layers\Business Logic\Managers\CommentManager.cs" />
     <Compile Include="Layers\Business Logic\Managers\ExperienceManager.cs" />
     <Compile Include="Layers\Business Logic\Managers\FriendManager.cs" />
+    <Compile Include="Layers\Business Logic\Managers\ImageManager.cs" />
     <Compile Include="Layers\Business Logic\Managers\LikeManager.cs" />
     <Compile Include="Layers\Business Logic\Managers\MessageManager.cs" />
     <Compile Include="Layers\Business Logic\Managers\PostManager.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Layers\Repository\IRepository.cs" />
     <Compile Include="Layers\Repository\Repository.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Like.cs" />
     <Compile Include="Models\Skill.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
@@ -239,6 +241,8 @@
     <Content Include="ReleaseNotes.css" />
     <Content Include="Resource\1.png" />
     <Content Include="Resource\icon.png" />
+    <Content Include="Resource\IMG_0547195025719.JPG" />
+    <Content Include="Resource\IMG_0547195142651.JPG" />
     <Content Include="Resource\linkedin-back.jpg" />
     <Content Include="Resource\logo.png" />
     <Content Include="Resource\pic.PNG" />
@@ -321,6 +325,8 @@
     <Content Include="Views\Shared\_PartialUnAuthSearch.cshtml" />
     <Content Include="Views\Person\UnAuthPersonal.cshtml" />
     <Content Include="Views\Shared\_PartialPersonalAdd.cshtml" />
+    <Content Include="Views\Shared\_PartialAddImage.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\PersonViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

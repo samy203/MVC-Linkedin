@@ -62,6 +62,8 @@ namespace Linkedin.Models.ViewModels
         public string RequiredUserID { get; set; }
 
         public ApplicationUser TargetUser { get; set; }
+
+        public bool IsFriends { get; set; }
     }
     public class SearchViewModel:NavigateViewModel
     {

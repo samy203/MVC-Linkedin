@@ -3,6 +3,7 @@ using Linkedin.Models.ViewModels;
 using System.Linq;
 using System.Web.Mvc;
 using System.Data.Entity;
+using Linkedin.Models;
 
 namespace Linkedin.Controllers
 {
@@ -169,12 +170,21 @@ namespace Linkedin.Controllers
         public ActionResult DisplayUser(PersonViewModel model)
         {
             model.TargetUser = u.context.Users.Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
-            model.ApplicationUser = u.context.Users.Where(e => e.Id == model.ID).FirstOrDefault();
-            if(model.TargetUser ==model.ApplicationUser)
+            model.ApplicationUser = u.context.Users.Include(c => c.Friends).Where(e => e.Id == model.ID).FirstOrDefault();
+            model.IsFriends = false;
+            if (model.TargetUser == model.ApplicationUser)
             {
                 PersonViewModel user = new PersonViewModel();
                 user.ID = model.TargetUser.Id;
-               return RedirectToAction ("Index","Person",user);
+                return RedirectToAction("Index", "Person", user);
+            }
+            foreach (var friendship in model.ApplicationUser.Friends)
+            {
+                if (friendship.FriendUserID ==model.TargetUser.Id)
+                {
+                    model.IsFriends = true;
+                    break;
+                }
             }
             return View("Personal", model);
         }
@@ -182,8 +192,34 @@ namespace Linkedin.Controllers
         [AllowAnonymous]
         public ActionResult unAuthDisplayUser(PersonViewModel model)
         {
-            model.TargetUser = u.context.Users.Include(c=>c.Experiences).Include(c=>c.Skills).Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
+            model.TargetUser = u.context.Users.Include(c => c.Experiences).Include(c => c.Skills).Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
             return View("UnAuthPersonal", model);
+        }
+
+        public ActionResult AddFriendPersonal(PersonViewModel model)
+        {
+            var user = u.context.Users.Include(e => e.Friends).Where(e => e.Id == model.ID).FirstOrDefault();
+
+            var targetUser = u.context.Users.Where(e => e.Id == model.RequiredUserID).FirstOrDefault();
+
+            model.TargetUser = targetUser;
+            model.IsFriends = true;
+
+
+
+            Friend f = new Friend();
+            f.Fk_ApplicationUserID = user.Id;
+            f.FriendUserID = targetUser.Id;
+
+            friendMang.Add(f);
+
+            f = new Friend();
+            f.FriendUserID = user.Id;
+            f.Fk_ApplicationUserID = targetUser.Id;
+
+            friendMang.Add(f);
+
+            return View("Personal", model);
         }
 
     }

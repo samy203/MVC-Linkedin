@@ -320,6 +320,7 @@
     <Content Include="Views\Search\UnAuthIndex.cshtml" />
     <Content Include="Views\Shared\_PartialUnAuthSearch.cshtml" />
     <Content Include="Views\Person\UnAuthPersonal.cshtml" />
+    <Content Include="Views\Shared\_PartialPersonalAdd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

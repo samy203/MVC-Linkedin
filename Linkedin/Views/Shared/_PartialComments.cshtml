@@ -20,7 +20,17 @@
 <div class="comments" id="commentz_@Model.CurrentPost.Id">
 
     <div class="user-comment">
-        <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+        @{
+            if (Model.ApplicationUser.Image == null)
+            {
+                <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+            }
+            else
+            {
+                <img class="comment-img" src="@Model.ApplicationUser.Image.Path" alt="" width="35px" height="35px">
+            }
+        }
+
         <input type="text" class="user-text-comment form-control" name="txtBox1" id="txtBox_@Model.CurrentPost.Id">
         <input type="submit" class="form-control comment-submit" value="Comment" id="cmnt_@Model.CurrentPost.Id" onclick="addComment({CurrentPostID:'@Model.CurrentPost.Id',ID:'@Model.ID'})">
     </div>
@@ -31,14 +41,24 @@
             foreach (var comment in Model.CurrentPost.Comments)
             {
                 <div class="other-comment">
-                    <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+                    @{
+                        if (comment.ApplicationUser.Image == null)
+                        {
+                            <img class="comment-img" src="~/Resource/propic.png" alt="" width="35px" height="35px">
+                        }
+                        else
+                        {
+                            <img class="comment-img" src="@comment.ApplicationUser.Image.Path" alt="" width="35px" height="35px">
+                        }
+                    }
+
                     <div class="comment-posting-data">
                         @{
                             string s = comment.ApplicationUser.FirstName + " " + comment.ApplicationUser.LastName;
                         }
                         <span class="font-14">@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = comment.ApplicationUser.Id, ID = Model.ID }, new { style = "color:Black" })</span><br>
                         <span class="font-12">
-                        @{
+                            @{
                                 if (Math.Abs((comment.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
                                 {
                                     <span>now</span>
@@ -72,7 +92,7 @@
                     </div>
                 </div>
 
-                                    }
-                                }
+            }
+        }
     }
 </div>

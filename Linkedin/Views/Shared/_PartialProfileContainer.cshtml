@@ -5,7 +5,17 @@
     <div class="personal-container">
         <div class="profile-background"></div>
         <div>
-            <img class="profile-img" src="~/Resource/propic.png" width="70px" height="70px" />
+            @{
+                if (Model.ApplicationUser.Image != null)
+                {
+                    <img src="@Model.ApplicationUser.Image.Path" class="profile-img" alt="" width="70px" height="70px">
+                }
+                else
+                {
+                    <img src="~/Resource/propic.png" class="profile-img" alt="" width="70px" height="70px">
+                }
+            }
+
         </div>
         <div class="welcome-container">Welcome @Model.ApplicationUser.FirstName</div>
         <div class="connections">

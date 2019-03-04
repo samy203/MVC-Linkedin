@@ -6,7 +6,17 @@
     <div class="profile-container">
         <div class="personal-container">
             <div class="profile-background"></div>
-            <img src="~/Resource/propic.png" class="profile-img" alt="">
+
+            @{
+                if (Model.TargetUser.Image != null)
+                {
+                    <img src="@Model.TargetUser.Image.Path" class="profile-img" alt="">
+                }
+                else
+                {
+                    <img src="~/Resource/propic.png" class="profile-img" alt="">
+                }
+            }
             <div class="info-container">
                 <div class="left-side">
                     <div class="personal-data">
@@ -25,13 +35,13 @@
                         </div>
                     </div>
                     @{
-                        if(Model.IsFriends ==true)
+                        if (Model.IsFriends == true)
                         {
 
                         }
                         else
                         {
-                        @Html.Partial("_PartialPersonalAdd");
+                            @Html.Partial("_PartialPersonalAdd");
                         }
 
                     }

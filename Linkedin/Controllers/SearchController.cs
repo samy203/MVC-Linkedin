@@ -15,11 +15,11 @@ namespace Linkedin.Controllers
         {
             SearchViewModel s = new SearchViewModel();
             s.SearchInput = model.SearchIndex;
-            var user = u.context.Users.Include(e => e.Friends).Where(e => e.Id == model.ID).FirstOrDefault();
+            var user = u.context.Users.Include(e => e.Friends).Include(e=>e.Image).Where(e => e.Id == model.ID).FirstOrDefault();
             s.ApplicationUser = user;
             s.ID = model.ID;
 
-            s.SearchedUsers = u.context.Users.Where(f => f.FirstName.Contains(s.SearchInput) || f.LastName.Contains(s.SearchInput)).ToList();
+            s.SearchedUsers = u.context.Users.Include(f=>f.Image).Where(f => f.FirstName.Contains(s.SearchInput) || f.LastName.Contains(s.SearchInput)).ToList();
             return View(s);
         }
 
@@ -38,7 +38,7 @@ namespace Linkedin.Controllers
 
             if (firstName != "")
             {
-                firstNameUsers = u.context.Users.Include(f => f.Experiences).Include(f => f.Skills).Where(f => f.FirstName.Contains(firstName)).ToList();
+                firstNameUsers = u.context.Users.Include(f => f.Experiences).Include(f => f.Skills).Include(f=>f.Image).Where(f => f.FirstName.Contains(firstName)).ToList();
             }
             else
             {
@@ -48,7 +48,7 @@ namespace Linkedin.Controllers
 
             if (lastName != "")
             {
-                lastNameUsers = u.context.Users.Include(l => l.Experiences).Include(l => l.Skills).Where(l => l.LastName.Contains(lastName)).ToList();
+                lastNameUsers = u.context.Users.Include(l => l.Experiences).Include(l => l.Skills).Include(f => f.Image).Where(l => l.LastName.Contains(lastName)).ToList();
             }
             else
             {

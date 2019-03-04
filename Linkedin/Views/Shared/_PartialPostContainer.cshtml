@@ -29,7 +29,19 @@
 
 
                 <div class="poster-data">
-                    <img class="poster-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
+
+                    @{
+                        if (post.ApplicationUser.Image == null)
+                        {
+                            <img class="poster-img" src="~/Resource/propic.png" alt="" width="50px" height="50px">
+                        }
+                        else
+                        {
+                            <img class="poster-img" src="@post.ApplicationUser.Image.Path" alt="" width="50px" height="50px">
+                        }
+                    }
+
+
                     <div class="poster-name">
                         @{
                             string s = post.ApplicationUser.FirstName + " " + post.ApplicationUser.LastName;
@@ -39,27 +51,27 @@
                             @{
                                 if (Math.Abs((post.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
                                 {
-                            <span>now</span>
+                                    <span>now</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalSeconds) < 60)
                                 {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalMinutes) < 60)
                                 {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalHours) < 24)
                                 {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
                                 }
                                 else if (Math.Abs((post.Date - DateTime.Now).Value.TotalDays) < 365)
                                 {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
+                                    @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
                                 }
                                 else
                                 {
-                            @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
+                                    @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
                                 }
                             }
 
@@ -75,7 +87,7 @@
                 </div>
                 @Html.Partial("_PartialComments", Model)
             </div>
-                                }
+        }
     }
 
 

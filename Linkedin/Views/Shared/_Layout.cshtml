@@ -11,7 +11,7 @@
 
     <nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
         <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-        <a href="#" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
+        <a href="@Url.Action("Index", "Feed", Model)" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
 
         @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { id = "searchForm", @class = "navbar-form", role = "search" }))
         {

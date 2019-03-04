@@ -174,6 +174,7 @@ namespace Linkedin.Controllers
         public ActionResult DisplayUser(PersonViewModel model)
         {
             model.TargetUser = u.context.Users.Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
+            model.Image = u.context.Images.Where(i => i.ImageId == model.TargetUser.Id).FirstOrDefault();
             model.ApplicationUser = u.context.Users.Include(c => c.Friends).Where(e => e.Id == model.ID).FirstOrDefault();
             model.IsFriends = false;
             if (model.TargetUser == model.ApplicationUser)
@@ -197,6 +198,7 @@ namespace Linkedin.Controllers
         public ActionResult unAuthDisplayUser(PersonViewModel model)
         {
             model.TargetUser = u.context.Users.Include(c => c.Experiences).Include(c => c.Skills).Where(c => c.Id == model.RequiredUserID).FirstOrDefault();
+            model.Image = u.context.Images.Where(i => i.ImageId == model.TargetUser.Id).FirstOrDefault();
             return View("UnAuthPersonal", model);
         }
 
@@ -204,7 +206,7 @@ namespace Linkedin.Controllers
         {
             var user = u.context.Users.Include(e => e.Friends).Where(e => e.Id == model.ID).FirstOrDefault();
 
-            var targetUser = u.context.Users.Where(e => e.Id == model.RequiredUserID).FirstOrDefault();
+            var targetUser = u.context.Users.Include(e=>e.Image).Where(e => e.Id == model.RequiredUserID).FirstOrDefault();
 
             model.TargetUser = targetUser;
             model.IsFriends = true;

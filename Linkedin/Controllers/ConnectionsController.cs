@@ -25,6 +25,10 @@ namespace Linkedin.Controllers
                 {
                     model.FriendsData.AddRange(u.context.Users.Where(k => k.Id == friend.FriendUserID).ToList());
                 }
+                foreach (var userFriend in model.FriendsData)
+                {
+                    userFriend.Image = u.context.Images.Where(i => i.ImageId == userFriend.Id).FirstOrDefault();
+                }
 
             }
 
@@ -37,9 +41,9 @@ namespace Linkedin.Controllers
 
 
             model.ApplicationUser = user;
-            
 
-            var toBeDeletedFriend = u.GetManager<FriendManager>().GetAllBind().Where(f => f.FriendUserID== model.DeletedFriendID).FirstOrDefault();
+
+            var toBeDeletedFriend = u.GetManager<FriendManager>().GetAllBind().Where(f => f.FriendUserID == model.DeletedFriendID).FirstOrDefault();
 
 
             var toBeDeletedOtherFriend = u.GetManager<FriendManager>().GetAllBind().Where(f => f.Fk_ApplicationUserID == model.DeletedFriendID).FirstOrDefault();

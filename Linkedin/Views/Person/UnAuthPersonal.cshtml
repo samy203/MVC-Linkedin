@@ -23,7 +23,17 @@
     <div class="profile-container">
         <div class="personal-container">
             <div class="profile-background"></div>
-            <img src="~/Resource/propic.png" class="profile-img" alt="">
+
+            @{
+                if (Model.Image != null)
+                {
+                    <img src="@Model.Image.Path" class="profile-img" alt="">
+                }
+                else
+                {
+                    <img src="~/Resource/propic.png" class="profile-img" alt="">
+                }
+            }
             <div class="info-container">
                 <div class="left-side">
                     <div class="personal-data">
@@ -41,7 +51,7 @@
                             }
                         </div>
                     </div>
-                   
+
                 </div>
                 <div class="right-side">
                     <div class="fa fa-users icon"></div><span id="marginleft10">

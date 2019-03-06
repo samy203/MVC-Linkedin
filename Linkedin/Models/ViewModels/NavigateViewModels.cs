@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -70,6 +71,12 @@ namespace Linkedin.Models.ViewModels
         public string RequiredUserID { get; set; }
 
         public ApplicationUser TargetUser { get; set; }
+
+        public bool IsFriends { get; set; }
+
+        public Image Image { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
     public class SearchViewModel : NavigateViewModel
     {

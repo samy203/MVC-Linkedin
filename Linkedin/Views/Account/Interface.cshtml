@@ -8,97 +8,101 @@
     <link type="text/css" rel="stylesheet" href="~/Content/style.css" />
 </head>
 
-    <div class="main">
+<div class="main">
+    <center>
+        @using (Html.BeginForm("RegisterInterface", "Account", new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="box">
+                <div id="info1"> Be great at what you do</div><br>
+                <div id="info2"> Get started - it's free.</div><br>
+                <div id="info3">First Name</div>
+                <div class="reg-segment" style="height:12%;">
+                    @Html.TextBoxFor(m => m.FirstName, new { style = "width:350px; height:30px;" })
+                    @Html.ValidationMessageFor(m => m.FirstName, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
+
+                </div>
+                <div id="info3">Last Name</div>
+                <div class="reg-segment" style="height:12%;">
+                    @Html.TextBoxFor(m => m.LastName, new { style = "width:350px; height:30px;" })
+                    @Html.ValidationMessageFor(m => m.LastName, "", new { style = "font-size:12px ; color:red; padding-top:3px; " })
+
+                </div>
+
+                <div id="info3">Email</div>
+
+
+
+                <div class="reg-segment" style="height:12%;">
+                    @Html.TextBoxFor(m => m.LoginEmail, new { style = "width:350px; height:30px;" })
+                    @Html.ValidationMessageFor(m => m.LoginEmail, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
+
+                </div>
+
+
+
+
+                <div id="info3">Password (6 or more characters)</div>
+                <div class="reg-segment" style="height:12%;">
+                    @Html.PasswordFor(m => m.Password, new { style = "width:350px; height:30px;" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
+
+                </div>
+
+
+
+                <div id="info4">
+                    By clicking Join now, you agree to LinkedIn's User <b style="color:black;">Agreement</b>, <b style="color:black">Privacy Policy</b>, and
+                    <b style="color:black">Cookie Policy</b>.
+                </div><br>
+                <input type="submit" class="button2" value="Register" />
+            </div>
+        }
+    </center>
+    <div class="sub-footer">
         <center>
-            @using (Html.BeginForm("RegisterInterface", "Account", new { role = "form"}))
+            @{ Html.EnableClientValidation(false); }
+            @using (Html.BeginForm("UnAuthIndex", "Search", FormMethod.Post, new { role = "form" }))
             {
-                @Html.AntiForgeryToken()
-                <div class="box">
-                    <div id="info1"> Be great at what you do</div><br>
-                    <div id="info2"> Get started - it's free.</div><br>
-                    <div id="info3">First Name</div>
-                    <div class="reg-segment" style="height:12%;">
-                        @Html.TextBoxFor(m => m.FirstName, new { style = "width:350px; height:30px;" })              
-                        @Html.ValidationMessageFor(m => m.FirstName, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
-                      
-                    </div>
-                    <div id="info3">Last Name</div>
-                    <div class="reg-segment" style="height:12%;">
-                        @Html.TextBoxFor(m => m.LastName, new { style = "width:350px; height:30px;" })
-                        @Html.ValidationMessageFor(m => m.LastName, "", new { style = "font-size:12px ; color:red; padding-top:3px; " })
-                        
-                    </div>
 
-                    <div id="info3">Email</div>
-
-
-
-                    <div class="reg-segment" style="height:12%;">
-                        @Html.TextBoxFor(m => m.LoginEmail, new { style = "width:350px; height:30px;" })
-                        @Html.ValidationMessageFor(m => m.LoginEmail, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
-                      
-                    </div>
-
-
-
-
-                    <div id="info3">Password (6 or more characters)</div>
-                    <div class="reg-segment" style="height:12%;">
-                        @Html.PasswordFor(m => m.Password, new { style = "width:350px; height:30px;" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { style = "font-size:12px ; color:red; padding-top:3px;" })
-                   
-                    </div>
-
-
-
-                    <div id="info4">
-                        By clicking Join now, you agree to LinkedIn's User <b style="color:black;">Agreement</b>, <b style="color:black">Privacy Policy</b>, and
-                        <b style="color:black">Cookie Policy</b>.
-                    </div><br>
-                    <input type="submit" class="button2" value="Register" />
+                @Html.AntiForgeryToken();
+                <div class="box2">
+                    Find a colleague: @Html.TextBox("firstName", "", new { style = "width:200px; height:25px;" })
+                    @Html.TextBox("lastName", "", new { style = "width:200px; height:25px;" })
+                    <input type="submit" id="submit2" value="Search" /><br>
+                    <p><span style="font-size:12px;">LinkedIn member directory:</span> <span style="color:#0e98f0; font-size:12px;">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z More | Browse by country</span> </p>
+                    <hr>
                 </div>
             }
+            @{ Html.EnableClientValidation(true); }
+
         </center>
-        <div class="sub-footer">
-            <center>
-                @using (Html.BeginForm("Interface", "Account", FormMethod.Post, new { role = "form" }))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="box2">
-                        Find a colleague: @Html.TextBoxFor(m => m.FirstName, new { style = "width:200px; height:25px;" })
-                        @Html.TextBoxFor(m => m.LastName, new { style = "width:200px; height:25px;" })
-                        <input type="submit" id="submit2" value="Search" /><br>
-                        <p><span style="font-size:12px;">LinkedIn member directory:</span> <span style="color:#0e98f0; font-size:12px;">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z More | Browse by country</span> </p>
-                        <hr>
-                    </div>
-                }
-            </center>
-
-        </div>
-
-        <div class="footer">
-            <center>
-                <div class="box3">
-
-                    <p>
-                        <span style="font-size:12px;">
-                            <li>LinkedIn © 2016</li>
-                            <li>User Agreement Privacy</li>
-                            <li>Policy Community</li>
-                            <li>Guidelines Cookie</li>
-                            <li>Policy Copyright</li>
-                            <li>Policy Guest</li>
-                            <li>Controls Language</li>
-                        </span>
-                    </p>
-
-                </div>
-            </center>
-
-        </div>
 
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
+    <div class="footer">
+        <center>
+            <div class="box3">
+
+                <p>
+                    <span style="font-size:12px;">
+                        <li>LinkedIn © 2016</li>
+                        <li>User Agreement Privacy</li>
+                        <li>Policy Community</li>
+                        <li>Guidelines Cookie</li>
+                        <li>Policy Copyright</li>
+                        <li>Policy Guest</li>
+                        <li>Controls Language</li>
+                    </span>
+                </p>
+
+            </div>
+        </center>
+
+    </div>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
 

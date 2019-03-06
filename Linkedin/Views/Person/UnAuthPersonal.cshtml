@@ -1,6 +1,23 @@
 ﻿@model PersonViewModel
+
+@{
+    Layout = null;
+}
+
 <link rel="stylesheet" href="~/Content/infostylesheet.css">
 
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/stylesheet.css">
+</head>
+
+
+<nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <a href="@Url.Action("interface","Account","")" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
+</nav>
 
 <div class="main-container">
     <div class="profile-container">
@@ -8,9 +25,9 @@
             <div class="profile-background"></div>
 
             @{
-                if (Model.TargetUser.Image != null)
+                if (Model.Image != null)
                 {
-                    <img src="@Model.TargetUser.Image.Path" class="profile-img" alt="">
+                    <img src="@Model.Image.Path" class="profile-img" alt="">
                 }
                 else
                 {
@@ -34,17 +51,7 @@
                             }
                         </div>
                     </div>
-                    @{
-                        if (Model.IsFriends == true)
-                        {
 
-                        }
-                        else
-                        {
-                            @Html.Partial("_PartialPersonalAdd");
-                        }
-
-                    }
                 </div>
                 <div class="right-side">
                     <div class="fa fa-users icon"></div><span id="marginleft10">

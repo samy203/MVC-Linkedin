@@ -12,7 +12,18 @@
         {
             <div class="friends-elements">
                 <div class="sug-frnd-data">
-                    <img class="frnd-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
+                    @{
+                        if (user.Image == null)
+                        {
+                            <img class="frnd-img" src="~/Resource/propic.png" alt="" width="50px" height="50px">
+                        }
+                        else
+                        {
+                            <img class="frnd-img" src="@user.Image.Path" alt="" width="50px" height="50px">
+                        }
+                    }
+
+
                     <div class="frnd-name">
                         <div>@user.FirstName</div>
                     </div>

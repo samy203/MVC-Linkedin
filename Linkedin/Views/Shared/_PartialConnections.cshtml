@@ -19,7 +19,19 @@
             {
 
                 <div class="experience-entity">
-                    <img class="experience-img" src="~/Resource/propic.png" alt="" width="70px" height="70px">
+                    @{
+                        if (friend.Image == null)
+                        {
+                            <img class="experience-img" src="~/Resource/propic.png" alt="" width="70px" height="70px">
+
+                        }
+                        else
+                        {
+                            <img class="experience-img" src="@friend.Image.Path" alt="" width="70px" height="70px">
+
+                        }
+                    }
+
                     <div class="experience-data com-nam">
                         @{
                             string s = friend.FirstName + " " + friend.LastName;

@@ -1,0 +1,25 @@
+﻿@model SearchViewModel
+@{
+    Layout = null;
+}
+<link rel="stylesheet" href="~/Content/connectionsheet.css">
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/stylesheet.css">
+</head>
+
+
+<nav class="navbar  navbar-icon-top navbar-expand-lg  navbar-dark ">
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <a href="@Url.Action("interface","Account","")" class="fa fa-linkedin-square navbar-brand" aria-hidden="true"></i></a>
+</nav>
+
+
+
+<div class="main-container">
+    <div class="experience-container" id="connectionz">
+        @Html.Partial("_PartialUnAuthSearch", Model)
+    </div>
+</div>

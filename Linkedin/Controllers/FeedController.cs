@@ -27,6 +27,9 @@ namespace Linkedin.Models.ViewModels
 
                 model.ApplicationUser = user;
 
+                model.ApplicationUser.Image = u.context.Images.Where(i => i.ImageId == model.ApplicationUser.Id).FirstOrDefault();
+
+                var userList = u.context.Users.Include(f=>f.Image).ToList();
 
                 using (var context = new ApplicationDbContext())
                 {
@@ -212,6 +215,7 @@ namespace Linkedin.Models.ViewModels
             comment.Date = DateTime.Now;
             comment.Fk_PostID = model.CurrentPostId;
             comment.Fk_ApplicationUserID = model.ID;
+            comment.ApplicationUser = u.context.Users.Include(u => u.Image).Where(u => u.Id == model.ID).FirstOrDefault();
             comment.Content = model.CommentContent;
 
             using (var context = new ApplicationDbContext())

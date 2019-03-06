@@ -3,9 +3,6 @@
 <link rel="stylesheet" href="~/Content/connectionsheet.css">
 
 
-
-
-
 @{
     if (Model.SearchedUsers.Count > 0)
     {
@@ -13,6 +10,7 @@
         {
 
             <div class="experience-entity">
+
                 @{
                     if (user.Image == null)
                     {
@@ -29,7 +27,7 @@
                     @{
                         string s = user.FirstName + " " + user.LastName;
                     }
-                    <div>@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = user.Id, ID = Model.ID }, new { style = "color:Black" })</div>
+                    <div>@Html.ActionLink(s, "UnAuthDisplayUser", "Person", new { RequiredUserID = user.Id }, new { style = "color:Black" })</div>
                     <div>
                         @{if (user.Experiences != null)
                             {
@@ -63,4 +61,5 @@
 }
 
 @Scripts.Render("~/bundles/jquery")
+
 

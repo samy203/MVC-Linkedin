@@ -19,6 +19,7 @@
 
         public string Description { get; set; }
 
+        public Image Image { get; set; }
 
 
         public string LastName { get; set; }
@@ -64,7 +65,7 @@
         public DbSet<Message> Messages { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Like> Likes { get; set; }
-
+        public DbSet<Image> Images { get; set; }
 
 
         public ApplicationDbContext()

@@ -33,7 +33,18 @@
 
                 <div class="posts" id="@Model.CurrentPost.Id">
                     <div class="poster-data">
-                        <img class="poster-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
+
+
+                        @{
+                        if (post.ApplicationUser.Image == null)
+                        {
+                        <img class="poster-img" src="~/Resource/propic.png" alt="" width="50px" height="50px">
+                        }
+                        else
+                        {
+                        <img class="poster-img" src="@post.ApplicationUser.Image.Path" alt="" width="50px" height="50px">
+                        }
+                        }
                         <div class="poster-name">
                             @{
                                 string s = post.ApplicationUser.FirstName + " " + post.ApplicationUser.LastName;
@@ -43,7 +54,7 @@
                                 @{
                                     if (Math.Abs((post.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
                                     {
-                                        <span>now</span>
+                                        <span>Just now</span>
                                     }
                                     else if (Math.Abs((post.Date - DateTime.Now).Value.TotalSeconds) < 60)
                                     {

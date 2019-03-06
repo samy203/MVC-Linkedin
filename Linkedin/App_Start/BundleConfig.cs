@@ -18,6 +18,8 @@ namespace Linkedin
             bundles.Add(new ScriptBundle("~/bundles/feedscript").Include(
                        "~/Scripts/feedscript.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/AsynchFeed").Include(
+                       "~/Scripts/Asynchronous.js"));
 
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -49,11 +51,23 @@ namespace Linkedin
                       ));
 
 
+            bundles.Add(new ScriptBundle("~/bundles/signalR").Include(
+                    "~/Scripts/jquery.signalR-2.2.2.min.js"
+             ));
+
+            bundles.Add(new ScriptBundle("~/bundles/signalRUser").Include(
+                   "~/signalr/js"
+            ));
+
+            bundles.Add(new ScriptBundle("~/bundles/signalRClient").Include(
+                  "~/Scripts/SignalRAsync.js"
+           ));
+
 
             //< script src = "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></ script > 
             //< script src = "https://code.jquery.com/jquery-1.11.1.min.js" ></ script > *@
-           
-        
+
+
 
 
 

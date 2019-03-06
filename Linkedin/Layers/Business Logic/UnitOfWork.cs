@@ -14,7 +14,7 @@
 
         private static readonly object padlock = new object();
 
-        UnitOfWork()
+       UnitOfWork()
         {
             context = new ApplicationDbContext();
         }

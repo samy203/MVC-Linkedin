@@ -27,9 +27,11 @@ namespace Linkedin.Models.ViewModels
 
         public List<ApplicationUser> FriendsData { get; set; }
 
-
         public string FriendID { get; set; }
 
+        public List<Comment> Comments { get; set; }
+
+        public int CommentId { get; set; }
 
         public List<string> FriendsId { get; set; }
 
@@ -48,6 +50,12 @@ namespace Linkedin.Models.ViewModels
 
         public int CurrentPostId { get; set; }
 
+
+        public DateTime? RecentDate { get; set; }
+
+
+        public string RecentDateString { get; set; }
+
     }
 
     public class PersonViewModel : NavigateViewModel
@@ -63,10 +71,10 @@ namespace Linkedin.Models.ViewModels
 
         public ApplicationUser TargetUser { get; set; }
     }
-    public class SearchViewModel:NavigateViewModel
+    public class SearchViewModel : NavigateViewModel
     {
         public List<ApplicationUser> SearchedUsers { get; set; }
         public string SearchInput { get; set; }
-        
+
     }
 }

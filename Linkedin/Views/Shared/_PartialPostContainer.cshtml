@@ -17,68 +17,78 @@
 
     <div class="seperator"></div>
 
-    <!--For each post in server.-->
+    <div id="postref">
+        @{
+            if (Model.RecentDateString == null)
+            {
+                Model.RecentDateString = Model.Posts[0].Date.ToString();
+            }
 
-    @{
-        foreach (var post in Model.Posts)
-        {
-            Model.CurrentPost = post;
+        }
 
-            <div class="posts">
+        @{
+            foreach (var post in Model.Posts)
+            {
+                Model.CurrentPost = post;
 
-
-
-                <div class="poster-data">
-                    <img class="poster-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
-                    <div class="poster-name">
-                        @{
-                            string s = post.ApplicationUser.FirstName + " " + post.ApplicationUser.LastName;
-                        }
-                        <div>@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = post.ApplicationUser.Id, ID = Model.ID }, new { style = "color:Black" })</div>
-                        <div style="font-size: 12px">
+                <div class="posts" id="@Model.CurrentPost.Id">
+                    <div class="poster-data">
+                        <img class="poster-img" src="~/Resource/pic.png" alt="" width="50px" height="50px">
+                        <div class="poster-name">
                             @{
-                                if (Math.Abs((post.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
-                                {
-                            <span>now</span>
-                                }
-                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalSeconds) < 60)
-                                {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
-                                }
-                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalMinutes) < 60)
-                                {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
-                                }
-                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalHours) < 24)
-                                {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
-                                }
-                                else if (Math.Abs((post.Date - DateTime.Now).Value.TotalDays) < 365)
-                                {
-                            @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
-                                }
-                                else
-                                {
-                            @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
-                                }
+                                string s = post.ApplicationUser.FirstName + " " + post.ApplicationUser.LastName;
                             }
+                            <div>@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = post.ApplicationUser.Id, ID = Model.ID }, new { style = "color:Black" })</div>
+                            <div style="font-size: 12px">
+                                @{
+                                    if (Math.Abs((post.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
+                                    {
+                                        <span>now</span>
+                                    }
+                                    else if (Math.Abs((post.Date - DateTime.Now).Value.TotalSeconds) < 60)
+                                    {
+                                        @(Math.Abs((post.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
+                                    }
+                                    else if (Math.Abs((post.Date - DateTime.Now).Value.TotalMinutes) < 60)
+                                    {
+                                        @(Math.Abs((post.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
+                                    }
+                                    else if (Math.Abs((post.Date - DateTime.Now).Value.TotalHours) < 24)
+                                    {
+                                        @(Math.Abs((post.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
+                                    }
+                                    else if (Math.Abs((post.Date - DateTime.Now).Value.TotalDays) < 365)
+                                    {
+                                        @(Math.Abs((post.Date - DateTime.Now).Value.Days)) <span>days ago</span>
+                                    }
+                                    else
+                                    {
+                                        @((int)(Math.Abs((post.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
+                                    }
+                                }
 
+                            </div>
                         </div>
                     </div>
+
+                    <div class="post-content">
+                        @post.Content
+                    </div>
+                    @Html.Partial("_PartialComments", Model)
                 </div>
+                                    }
+        }
+    </div>
 
 
+    @Scripts.Render("~/bundles/AsynchFeed")
 
-
-                <div class="post-content">
-                    @post.Content
-                </div>
-                @Html.Partial("_PartialComments", Model)
-            </div>
-                                }
-    }
-
-
-
+    <script>
+        @{ 
+            var x = Model.RecentDateString;
+            var y = 1;
+        }
+    setRefresher({ ID: '@Model.ID', RecentDateString: '@Model.Posts[0].Date.ToString()' });
+    </script>
 
 </div>

@@ -138,4 +138,9 @@ E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AI.WindowsServer.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AI.Web.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.dll
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.pdb
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AspNet.SignalR.Core.dll
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AspNet.SignalR.Core.pdb
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AspNet.SignalR.Core.xml
+E:\Tech\ITI\ASPMVC\Final Project\Linkedin\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
 E:\Tech\ITI\ASPMVC\Final Project\Linkedin\obj\Debug\Linkedin.csprojResolveAssemblyReference.cache

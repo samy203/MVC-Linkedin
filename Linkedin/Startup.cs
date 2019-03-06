@@ -1,4 +1,5 @@
-﻿using Microsoft.Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(Linkedin.Startup))]
@@ -10,7 +11,9 @@ namespace Linkedin
         {
             ConfigureAuth(app);
 
+            app.MapSignalR();
+
         }
-        
+
     }
 }

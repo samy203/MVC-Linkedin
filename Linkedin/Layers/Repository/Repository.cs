@@ -1,5 +1,6 @@
 ﻿namespace Linkedin.Layers.Repository
 {
+    using Linkedin.Models;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -25,8 +26,10 @@
 
         public TEntity Add(TEntity entity)
         {
+            TEntity x;
             entitySet.Add(entity);
-            return context.SaveChanges() > 0 ? entity : null;
+            x = context.SaveChanges() > 0 ? entity : null;
+            return x;
         }
 
         public DbSet<TEntity> GetAll()
@@ -36,29 +39,34 @@
 
         public List<TEntity> GetAllBind()
         {
-            return entitySet.ToList();
+            var x = entitySet.ToList();
+            return x;
         }
 
         public List<TEntity> GetAllBindInclude<TProperty>(Expression<Func<TEntity, TProperty>> path)
         {
-            return entitySet.Include(path).ToList();
+            var x = entitySet.Include(path).ToList();
+            return x;
         }
 
         public TEntity GetById(params object[] id)
         {
-            return entitySet.Find(id);
+            var x = entitySet.Find(id);
+            return x;
         }
 
         public bool Remove(TEntity entity)
         {
             entitySet.Remove(entity);
-            return context.SaveChanges() > 0;
+            var x = context.SaveChanges() > 0;
+            return x;
         }
 
         public bool Update(TEntity entity)
         {
             entitySet.AddOrUpdate(entity);
-            return context.SaveChanges() > 0;
+            var x = context.SaveChanges() > 0;
+            return x;
         }
     }
 }

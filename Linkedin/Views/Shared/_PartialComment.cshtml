@@ -1,0 +1,50 @@
+﻿@model FeedsViewModel
+@if (Model.Comments != null)
+            {
+                foreach (var comment in Model.Comments)
+                {
+        <div class="other-comment">
+            <img class="comment-img" src="~/Resource/pic.png" alt="" width="35px" height="35px">
+            <div class="comment-posting-data">
+                @{
+                    string s = comment.ApplicationUser.FirstName + " " + comment.ApplicationUser.LastName;
+                }
+                <span class="font-14">@Html.ActionLink(s, "DisplayUser", "Person", new { RequiredUserID = comment.ApplicationUser.Id, ID = Model.ID }, new { style = "color:Black" })</span><br>
+                <span class="font-12">
+                    @{
+                        if (Math.Abs((comment.Date - DateTime.Now).Value.TotalMilliseconds) < 1000)
+                        {
+                            <span>Just now</span>
+                        }
+                        else if (Math.Abs((comment.Date - DateTime.Now).Value.TotalSeconds) < 60)
+                        {
+                            @(Math.Abs((comment.Date - DateTime.Now).Value.Seconds)) <span>seconds ago</span>
+                        }
+                        else if (Math.Abs((comment.Date - DateTime.Now).Value.TotalMinutes) < 60)
+                        {
+                            @(Math.Abs((comment.Date - DateTime.Now).Value.Minutes)) <span>mins ago</span>
+                        }
+                        else if (Math.Abs((comment.Date - DateTime.Now).Value.TotalHours) < 24)
+                        {
+                            @(Math.Abs((comment.Date - DateTime.Now).Value.Hours)) <span>hours ago</span>
+                        }
+                        else if (Math.Abs((comment.Date - DateTime.Now).Value.TotalDays) < 365)
+                        {
+                            @(Math.Abs((comment.Date - DateTime.Now).Value.Days)) <span>days ago</span>
+                        }
+                        else
+                        {
+                            @((int)(Math.Abs((comment.Date - DateTime.Now).Value.Days) / 365)) <span>years ago</span>
+                        }
+                    }
+
+                </span>
+            </div>
+            <div class="comment-posting-text font-14">
+                @comment.Content
+            </div>
+        </div>
+
+                            }
+                        }
+

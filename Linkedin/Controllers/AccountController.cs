@@ -449,11 +449,24 @@ namespace Linkedin.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
         public async Task<ActionResult> LoginInterface(LoginViewModel model, string returnUrl)
         {
+            if (HttpContext.User.Identity.IsAuthenticated)
+            {
+                AuthenticationManager.SignOut();
+                Session.Abandon();
+
+                //return RedirectToAction("LoginInterface", new LoginViewModel() { Password = model.Password, LoginEmail = model.LoginEmail, RememberMe = model.RememberMe });
+            }
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             ApplicationUser signedUser = UserManager.FindByEmail(model.LoginEmail);
+            if (signedUser==null)
+            {
+                ModelState.AddModelError("password", "The email or password is incorrect");
+                return View("RedirectLogin", model);
+            }
             var result = await SignInManager.PasswordSignInAsync(signedUser.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
@@ -482,7 +495,7 @@ namespace Linkedin.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.FirstName, Email = model.LoginEmail, FirstName = model.FirstName, LastName = model.LastName };
+                var user = new ApplicationUser { UserName = model.LoginEmail, Email = model.LoginEmail, FirstName = model.FirstName, LastName = model.LastName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

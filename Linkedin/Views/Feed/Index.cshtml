@@ -1,25 +1,31 @@
 ﻿@model FeedsViewModel
-
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 
 <link rel="stylesheet" href="~/Content/stylesheetbody.css">
 
 <div class="main-container">
-   
+
 
     @Html.Partial("_PartialProfileContainer", Model)
 
 
     @Html.Partial("_PartialPostContainer", Model)
 
-        
+
     @Html.Partial("_PartialFriendContainer", Model)
 
-                                        
+
 </div>
 
-    @Scripts.Render("~/bundles/profileFnc")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryabs")
-    @Scripts.Render("~/bundles/feedscript")
-    <script>AddLineUnder(0)</script>
+@Scripts.Render("~/bundles/profileFnc")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/jqueryabs")
+@Scripts.Render("~/bundles/feedscript")
+@Scripts.Render("~/bundles/signalR")
+<script src="~/signalr/hubs" type="text/javascript"></script>
+@Scripts.Render("~/bundles/signalRClient")
+<script>AddLineUnder(0)</script>
